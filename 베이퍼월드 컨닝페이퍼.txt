@@ -1,0 +1,33 @@
+플레이어
+
+1. Rigidbody 2D Controller
+
+2. Sortable Object
+
+3. Poly Nav Agent
+
+5. Knockback Controller
+
+6. Input Event Poster
+
+7. Consumable Controller
+
+8. Sprite Renderer Controller
+
+9. Forcer
+
+플레이어 하위오브젝트
+
+1. Grabber
+
+2. Damage
+
+3. Camera
+
+4. Rooter
+
+5. States
+
+6. AnimationEvents
+
+7. FlippingObjects
