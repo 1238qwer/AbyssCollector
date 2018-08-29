@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Abyss
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 6f87acbbe0fd4de46b6dde8ca9030996, type: 2}
-  parallaxVector: {x: 0, y: 1}
+  parallaxVector: {x: 0, y: -1}
   parallaxSpeed: 0.02

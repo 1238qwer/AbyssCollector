@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3344886}
   - component: {fileID: 2329910}
   - component: {fileID: 6577722}
+  - component: {fileID: 114756914952245370}
   m_Layer: 0
   m_Name: rock_a
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 157690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,3 +101,15 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 157690}
   m_IsPrefabAsset: 1
+--- !u!114 &114756914952245370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 157690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295c2da1b23e5824aa96a022d8befc67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 157690}
