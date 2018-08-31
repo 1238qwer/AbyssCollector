@@ -18,7 +18,7 @@ public class TrapGenerateManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         ct += Time.deltaTime;
-        if (ct >= coolTime*5)
+        if (ct >= coolTime)
         {
             GameObject trap = Instantiate(origin[Random.Range(0,origin.Length)], trapGenerators[Random.Range(0,trapGenerators.Length)].transform.position, Quaternion.identity);
             trap.transform.rotation = new Quaternion(90, 90, 0, 0);

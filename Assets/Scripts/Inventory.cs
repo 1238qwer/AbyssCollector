@@ -38,20 +38,20 @@ public class Inventory : ScriptableObject {
         return null;
     }
 
-    public void Spawn(string id)
+    public List<Fish> GetAll()
     {
-        GameObject testAqua = GameObject.Find("AquaLium");
-        GameObject fish = Instantiate(Get(id), testAqua.transform.position, Quaternion.identity);
+        List<Fish> tmp = new List<Fish>();
 
-        fish.transform.Rotate(0, 0, Random.Range(-90, 90));
-
-        if (fish != null)
+        foreach (string item in gettingFisies)
         {
-            fish.AddComponent<Fish>();
-            DestroyImmediate(fish.GetComponent<FishTrap>());
+            Fish currentItem = Resources.Load<GameObject>("SailCharacterPack/Prefabs/" + item).GetComponent<Fish>();
 
-            gettingFisies.Remove(id);
+            tmp.Add(currentItem);
 
-        }     
+        }
+
+        return tmp;
     }
+
+
 }

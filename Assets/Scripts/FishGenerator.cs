@@ -19,7 +19,7 @@ public class FishGenerator : MonoBehaviour {
         {
             random = Random.Range(0, 100);
 
-            if (random >= 10)
+            if (random >= 90)
             {
                 GameObject spawn =
                 Instantiate(fish, transform.position, Quaternion.identity);

@@ -6,9 +6,10 @@ public class Trap : MonoBehaviour {
 
     public GameObject obj;
     private int speed;
+    private AudioSource audioSource;
 	// Use this for initialization
 	void Awake () {
-        Debug.Log(gameObject.gameObject.name);
+        audioSource = GetComponent<AudioSource>();
         speed = Random.Range(1, 5);
 	}
 	
@@ -21,7 +22,7 @@ public class Trap : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            Debug.Log("충돌");
+            audioSource.Play();
             Player player =  other.GetComponentInParent<Player>();
             StartCoroutine(player.Death());
         }
