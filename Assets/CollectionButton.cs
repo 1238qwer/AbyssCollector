@@ -32,7 +32,7 @@ public class CollectionButton : MonoBehaviour {
         GameObject testAqua = GameObject.Find("AquaLium");
 
         fish = Instantiate(origin, point, Quaternion.identity).GetComponent<Fish>();
-        fish.transform.Rotate(0, 0, UnityEngine.Random.Range(-90, 90));
+        fish.transform.Rotate(-90, 0, UnityEngine.Random.Range(-90, 90));
         //fish.transform.Rotate(0, 0, UnityEngine.Random.Range(-90, 90));
         inventory.gettingFisies.Remove(origin.name);
 
