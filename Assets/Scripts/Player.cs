@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
         gameOverUI.SetActive(false);
         point = Vector3.up;
-        direction = Vector3.back;
+        direction = Vector3.zero;
         transform.LookAt(direction);
     }
 	

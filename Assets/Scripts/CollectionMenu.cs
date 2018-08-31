@@ -38,7 +38,7 @@ public class CollectionMenu : MonoBehaviour {
         for (int i = 0; i < collections.Count; i++)
         {
           
-            Image currentImage = Instantiate(image, new Vector3(0,1.6f-index,0), Quaternion.identity);
+            Image currentImage = Instantiate(image, new Vector3(0,0-index,0), Quaternion.identity);
             currentImage.transform.SetParent(transform);
             currentImage.transform.localScale = new Vector3(1, 1, 1);
 
