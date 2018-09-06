@@ -10,38 +10,59 @@ public class Fish : MonoBehaviour {
     private int speed;
     public Inventory inventory;
 
+    public Animator animator;
+    public Rigidbody rb;
+
+    public float lifeTime;
+    private float ct;
+
     // Use this for initialization
     void Start () {
-        if (gameObject.scene.name == "Collect")
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        if (gameObject.scene.name == "Demo")
             isCollection = true;
 
         if (isCollection)
         {
+            animator.Play("run");
             speed = Random.Range(1, 5);
 
             if (transform.position.x >= 0)
             {
                 direction =
-                new Vector3(-1, 0, 0) * Time.deltaTime;
-                transform.Rotate(new Vector3(-90, -90, 0));
+                new Vector3(0, 0, 1) * Time.deltaTime;
+                transform.Rotate(new Vector3(0, 0, 0));
             }
             else
             {
-                direction = new Vector3(1, 0, 0) * Time.deltaTime;
-                transform.Rotate(new Vector3(-90, -90, -180));
+                direction = new Vector3(0, 0,1) * Time.deltaTime;
+                transform.Rotate(new Vector3(0, 0, 0));
             }
         }
         else
-        direction = -transform.up;
+        {
+            transform.Rotate(new Vector3(0, 0, 0));
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            direction = -transform.up;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        ct += Time.deltaTime;
+        if (ct > lifeTime && gameObject.name != "Enviroment")
+            Destroy(gameObject);
+
         if (isCollection)
             Locomotive();
         else
+        {
             transform.localPosition += direction * Time.deltaTime * 0.1f;
-	}
+            transform.localRotation = new Quaternion(0, 180, 0, 0);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -49,11 +70,12 @@ public class Fish : MonoBehaviour {
         {
             if (other.tag == "Player")
             {
-                Player player = other.GetComponentInParent<Player>();
+                GhostPlayer player = other.GetComponentInParent<GhostPlayer>();
+
+                StartCoroutine(player.Death(this, rb));
 
                 inventory.Add(name);
 
-                Destroy(gameObject);
             }
         }
         else
@@ -66,6 +88,6 @@ public class Fish : MonoBehaviour {
     public void Locomotive()
     {
         Debug.Log(direction);
-        transform.position += direction * Time.deltaTime * speed * 10;
+        transform.position += new Vector3(0,0,-1) * Time.deltaTime * speed * 10;
     }
 }

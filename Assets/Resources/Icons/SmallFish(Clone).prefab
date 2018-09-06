@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222929767881069392}
   - component: {fileID: 114504990703614954}
   m_Layer: 5
-  m_Name: SmallFishIcon
+  m_Name: SmallFish(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

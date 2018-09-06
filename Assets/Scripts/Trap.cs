@@ -7,24 +7,32 @@ public class Trap : MonoBehaviour {
     public GameObject obj;
     private int speed;
     private AudioSource audioSource;
+    public Animator animator;
+    private Rigidbody rb;
+
+
 	// Use this for initialization
 	void Awake () {
         audioSource = GetComponent<AudioSource>();
-        speed = Random.Range(1, 5);
+        speed = Random.Range(10, 15);
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
+        if (animator)
+        animator.Play("run");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        obj.transform.position += new Vector3(0, speed, 0)* Time.deltaTime;
+
+        obj.transform.position += new Vector3(0, 0, -15)* Time.deltaTime;
 	}
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            audioSource.Play();
-            Player player =  other.GetComponentInParent<Player>();
-            StartCoroutine(player.Death());
+            GhostPlayer player =  other.GetComponentInParent<GhostPlayer>();
+            //StartCoroutine(player.Death(this,rb));
         }
             
     }

@@ -21,7 +21,7 @@ public class TrapGenerateManager : MonoBehaviour {
         if (ct >= coolTime)
         {
             GameObject trap = Instantiate(origin[Random.Range(0,origin.Length)], trapGenerators[Random.Range(0,trapGenerators.Length)].transform.position, Quaternion.identity);
-            trap.transform.rotation = new Quaternion(90, 90, 0, 0);
+            trap.transform.rotation = new Quaternion(0, 180, 0, 0);
             ct = 0;
         }
     }
