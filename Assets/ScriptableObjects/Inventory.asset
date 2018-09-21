@@ -11,4 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7a3b3dc6f329945b20500ea1d69478, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  gettingFisies: []
+  gettingItem:
+  - zombie
+  - police
+  - female

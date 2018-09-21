@@ -50,6 +50,6 @@ public class UIManager : MonoBehaviour {
 
     public void GotoCollectScene()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Demo");
     }
 }

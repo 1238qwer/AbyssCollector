@@ -5,27 +5,17 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Inventory : ScriptableObject {
 
-    public List<string> gettingFisies = new List<string>();
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public List<string> gettingItem = new List<string>();
 
     public void Add(string id)
     {
-        gettingFisies.Add(id);
+        gettingItem.Add(id);
     }
 
     GameObject currentItem;
     public GameObject Get(string id)
     {
-        foreach(string item in gettingFisies)
+        foreach(string item in gettingItem)
         {
             if (item == id)
             {
@@ -38,13 +28,13 @@ public class Inventory : ScriptableObject {
         return null;
     }
 
-    public List<Fish> GetAll()
+    public List<CatchableGhost> GetAll()
     {
-        List<Fish> tmp = new List<Fish>();
+        List<CatchableGhost> tmp = new List<CatchableGhost>();
 
-        foreach (string item in gettingFisies)
+        foreach (string item in gettingItem)
         {
-            Fish currentItem = Resources.Load<GameObject>("SailCharacterPack/Prefabs/" + item).GetComponent<Fish>();
+            CatchableGhost currentItem = Resources.Load<GameObject>("SailCharacterPack/Prefabs/" + item).GetComponent<CatchableGhost>();
 
             tmp.Add(currentItem);
 

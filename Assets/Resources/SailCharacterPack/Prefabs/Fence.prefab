@@ -37,7 +37,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4582285877330034}
-  - component: {fileID: 114356463027766772}
+  - component: {fileID: 114851733860331628}
+  - component: {fileID: 114264638245760624}
+  - component: {fileID: 114988436374459122}
+  - component: {fileID: 65096222968559084}
   m_Layer: 0
   m_Name: Fence
   m_TagString: Untagged
@@ -114,6 +117,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479072930648560}
   m_Mesh: {fileID: 4300000, guid: 8337c1006f5a8894fa6fca6c95253e0b, type: 3}
+--- !u!65 &65096222968559084
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764245822938992}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!95 &95266123361021964
 Animator:
   serializedVersion: 3
@@ -132,7 +147,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114356463027766772
+--- !u!114 &114264638245760624
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,8 +155,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1764245822938992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 295c2da1b23e5824aa96a022d8befc67, type: 3}
+  m_Script: {fileID: 11500000, guid: eb22aef7048310c4a899d1359da1e7f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1764245822938992}
-  animator: {fileID: 0}
+  lifeTime: 20
+--- !u!114 &114851733860331628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764245822938992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68e3ad3c2237be48a566a48d8c7dd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: -10}
+  speed: 1
+--- !u!114 &114988436374459122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764245822938992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e99b5b3ad5e18499d4f15c80079804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: fence

@@ -10,7 +10,7 @@ public class CollectionMenu : MonoBehaviour {
 
     [SerializeField] private Inventory inventory;
 
-    public List<Fish> collections = new List<Fish>();
+    public List<CatchableGhost> collections = new List<CatchableGhost>();
     public Image image;
 
     public class CollectionData
