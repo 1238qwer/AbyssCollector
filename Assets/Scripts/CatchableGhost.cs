@@ -41,6 +41,7 @@ public class CatchableGhost : MonoBehaviour
             exerciser.DynamicDirectionChange(transform.forward);
             Destroy(disappearer);
             exerciser.SetSpeed(0.5f);
+            animator.Play("walk");
             //transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
         }
 	}

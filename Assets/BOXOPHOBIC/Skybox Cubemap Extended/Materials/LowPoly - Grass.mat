@@ -63,9 +63,9 @@ Material:
     - _Float1: 10
     - _Float3: 0.2
     - _GlossMapScale: 1
-    - _Glossiness: 0.68
+    - _Glossiness: 0.2
     - _GlossyReflections: 1
-    - _Metallic: 1
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -81,7 +81,7 @@ Material:
     - __dirty: 0
     m_Colors:
     - _BottomColor: {r: 0.6544117, g: 0.6453854, b: 0.32720587, a: 1}
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.63509494, g: 0.64705884, b: 0.076124564, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _TopColor: {r: 0.6356229, g: 0.8602941, b: 0.2087478, a: 1}
     - _Vector1: {r: 0, g: 0, b: 0, a: 0}

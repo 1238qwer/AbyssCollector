@@ -12,6 +12,10 @@ public class MouseLook : MonoBehaviour {
     public float maximumX = 360F;
     public float minimumY = -60F;
     public float maximumY = 60F;
+
+    public float maximum;
+    public float minimum;
+
     float rotationY = 0F;
 
     public void LookingMouse()
@@ -27,7 +31,21 @@ public class MouseLook : MonoBehaviour {
         }
         else if (axes == RotationAxes.MouseX)
         {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+            if (gameObject.transform.localRotation.y <= maximum)
+            {
+                if (Input.GetAxis("Mouse X") >= 0)
+                {
+                    transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+                }
+            }
+            if (gameObject.transform.localRotation.y >= minimum)
+            {
+                if (Input.GetAxis("Mouse X") <= 0)
+                {
+                    transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityX, 0);
+                }
+            }
+
         }
         else
         {
