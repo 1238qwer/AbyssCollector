@@ -17,7 +17,7 @@ public class CatchableGhost : MonoBehaviour
         animator = GetComponent<Animator>();
         exerciser = GetComponent<Exerciser>();
 
-        if (gameObject.scene.name == "Demo")
+        if (gameObject.scene.name == "Arcade")
             isArcadeGameing = true;
 
         if (isArcadeGameing)
