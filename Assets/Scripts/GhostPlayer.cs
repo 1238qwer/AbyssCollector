@@ -19,6 +19,9 @@ public class GhostPlayer : MonoBehaviour
     public bool isAttack;
     private GameObject pickUpObject;
 
+    public GameObject punchParticle;
+    public ObjectPooler objectPooler;
+
     public float coolTime;
     private float elpaseTime;
 
@@ -27,6 +30,7 @@ public class GhostPlayer : MonoBehaviour
 	void Awake () {
         animator = GetComponentInChildren<Animator>();
         animator.Play("run");
+        objectPooler.Pool(punchParticle,5);
     }
 	
     public void ActiveAttack()
@@ -95,6 +99,7 @@ public class GhostPlayer : MonoBehaviour
         {
             if (isAttack)
             {
+                objectPooler.GetPool();
                 Ghost trap = eventObject.GetComponent<Ghost>();
                 Exerciser exerciser = eventObject.GetComponent<Exerciser>();
 

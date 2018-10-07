@@ -2967,6 +2967,8 @@ MonoBehaviour:
   mouseLook: {fileID: 1232478234}
   exerciser: {fileID: 1232478236}
   isAttack: 0
+  punchParticle: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 2}
+  objectPooler: {fileID: 11400000, guid: c1031a5625931cc4392b417b17f8a8da, type: 2}
   coolTime: 0
   inventory: {fileID: 11400000, guid: c55c99fc6c3477d478faf3de53aad9a3, type: 2}
 --- !u!82 &1232478231
