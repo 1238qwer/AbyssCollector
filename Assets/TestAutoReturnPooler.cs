@@ -18,6 +18,7 @@ public class TestAutoReturnPooler : MonoBehaviour {
         if (ct >= 10.0f)
         {
             objectPooler.ReturnPool();
+            ct = 0;
         }
 	}
 }
