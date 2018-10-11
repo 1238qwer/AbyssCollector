@@ -23,13 +23,16 @@ public class TagComparator : MonoBehaviour{
     {
         foreach(TagData data in tagDatas)
         {
-            foreach(string tag in data.tags)
+            if (data.isMust)
             {
+                data.tagEvent.Invoke(gameObject);
+                return;
+            }
+
+            foreach (string tag in data.tags)
+            {
+                Debug.Log("검색중");
                 if (tag == gameObject.tag)
-                {
-                    data.tagEvent.Invoke(gameObject);
-                }
-                else if (data.isMust)
                 {
                     data.tagEvent.Invoke(gameObject);
                 }

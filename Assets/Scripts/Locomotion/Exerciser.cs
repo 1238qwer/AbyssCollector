@@ -56,7 +56,6 @@ public class Exerciser : MonoBehaviour {
         isStop = false;
     }
 
-    public float stopElapseTime;
     public void Stop(float time)
     {
         isStop = true;
@@ -65,39 +64,47 @@ public class Exerciser : MonoBehaviour {
 
     private IEnumerator StopTimer(float time)
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(time);
         Move();
-        stopElapseTime = 0;
     }
 
     public void Turn()
     {
         transform.Rotate(new Vector3(0, Random.Range(90, 180), 0));
+        DynamicDirectionChange(transform.forward);
     }
 
+    private float followTime;
     public void Follow(GameObject gameObject)
     {
-        Vector3 vec;
-        vec = transform.position - gameObject.transform.position;
-
-        DynamicDirectionChange(vec);
+        StartCoroutine(FollowObject(gameObject));
     }
 
-    private float followElapseTime;
-    public void Follow(GameObject gameObject,float time)
+    private IEnumerator FollowObject(GameObject gameObject)
     {
-        Vector3 originVec;
-        originVec = direction;
         Vector3 vec;
-        vec = transform.position - gameObject.transform.position;
+        vec = gameObject.transform.position - transform.position;
 
+        transform.LookAt(gameObject.transform);
         DynamicDirectionChange(vec);
 
-        followElapseTime += Time.deltaTime;
-        if (followElapseTime >= time)
-        {
-            DynamicDirectionChange(originVec);
-            followElapseTime = 0;
-        }
+        yield return null;
+
+        StartCoroutine(FollowObject(gameObject));
+    }
+
+    public void FollowTimeSet(float time)
+    {
+        followTime = time;
+
+        StartCoroutine(FollowTimer(time));
+    }
+
+    private IEnumerator FollowTimer(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        StopAllCoroutines();
+        DynamicDirectionChange(transform.forward);
     }
 }

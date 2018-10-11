@@ -15722,8 +15722,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1264817976}
-  - component: {fileID: 651743034}
-  - component: {fileID: 651743033}
   m_Layer: 0
   m_Name: MobileMaleFreeSimpleMovement1
   m_TagString: Player
@@ -15731,36 +15729,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &651743033
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 136871151905865182, guid: 398f1c2f03006944da18a6ff5c8c370d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 651743032}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!54 &651743034
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 54290591943890086, guid: 398f1c2f03006944da18a6ff5c8c370d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 651743032}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 5
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!1 &653437568
 GameObject:
   m_ObjectHideFlags: 0
@@ -30076,6 +30044,7 @@ GameObject:
   - component: {fileID: 1232478231}
   - component: {fileID: 1232478235}
   - component: {fileID: 1232478239}
+  - component: {fileID: 1232478240}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -30098,7 +30067,6 @@ MonoBehaviour:
   scoreText: {fileID: 1951027054}
   gameOverUI: {fileID: 1924238542}
   mouseLook: {fileID: 1232478234}
-  exerciser: {fileID: 1232478236}
   punchParticle: {fileID: 180128, guid: 6586ff0f14125534cae2f5d8f04b7871, type: 2}
   objectPooler: {fileID: 11400000, guid: c1031a5625931cc4392b417b17f8a8da, type: 2}
   attackPos: {fileID: 232088314}
@@ -30287,25 +30255,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1232478229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 167934508b26cc74a878e4f63216bcd5, type: 3}
+  m_Script: {fileID: 11500000, guid: 3cf3cbdc791a67244ad804730ee3c06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1232478230}
-        m_MethodName: OnCollide
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: ColliderEventReciever+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  tagDatas:
+  - tags:
+    - CatchableGhost
+    isMust: 0
+    tagEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: TagComparator+TagData+TagEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &1232478238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30317,7 +30278,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e99b5b3ad5e18499d4f15c80079804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &1232478239
+  onTriggerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1232478237}
+        m_MethodName: OnEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114189631296549768, guid: 5faeddab11885b4489040b2d4ea1f928,
+          type: 2}
+        m_MethodName: Log
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "\uC774\uAC74?"
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ColliderEventGenerator+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ColliderEventGenerator+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  onTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ColliderEventGenerator+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!136 &1232478239
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1232478229}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 4, z: 0}
+--- !u!54 &1232478240
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -2464,6 +2464,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1408258809033502, guid: 7fdbf1bfc890b5344aa820dbbe6c2e49, type: 2}
+      propertyPath: m_Name
+      value: Enviroments
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fdbf1bfc890b5344aa820dbbe6c2e49, type: 2}
   m_IsPrefabAsset: 0
@@ -5154,7 +5158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuImage: {fileID: 0}
-  mainCam: {fileID: 0}
 --- !u!1 &2035371231 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543654460826400, guid: 7fdbf1bfc890b5344aa820dbbe6c2e49,

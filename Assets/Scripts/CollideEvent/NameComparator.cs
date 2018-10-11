@@ -23,13 +23,16 @@ public class NameComparator : MonoBehaviour
     {
         foreach (TagData data in nameDatas)
         {
+            if (data.isMust)
+            {
+                data.nameEvent.Invoke(gameObject);
+                return;
+            }
+
             foreach (string name in data.names)
             {
+
                 if (gameObject.name.Contains(name))
-                {
-                    data.nameEvent.Invoke(gameObject);
-                }
-                else if (data.isMust)
                 {
                     data.nameEvent.Invoke(gameObject);
                 }
