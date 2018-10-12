@@ -7,6 +7,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(ColliderEventGenerator))]
 public class GhostPlayer : MonoBehaviour
 {  
+    private enum PlayerState
+    {
+        run,
+        attack
+    }
+    private PlayerState state = PlayerState.run;
+
     [SerializeField] private Text scoreText;//ui매니저로
     [SerializeField] private GameObject gameOverUI;//ui매니저로
     [SerializeField] private MouseLook mouseLook;   
@@ -29,17 +36,16 @@ public class GhostPlayer : MonoBehaviour
         exerciser = GetComponent<Exerciser>();
         animator.Play("run");
         objectPooler = new ObjectPooler();
-        objectPooler.Pool(punchParticle,5);
-        Debug.Log(objectPooler);
+        objectPooler.AutoReturnPool(punchParticle, 5, 5);
     }
 	
     public void ActiveAttack()
     {
-        isAttack = true;
+        state = PlayerState.attack;
     }
     public void DeactiveAttack()
     {
-        isAttack = false;
+        state = PlayerState.run;
     }
 
 	void Update () {
@@ -90,9 +96,9 @@ public class GhostPlayer : MonoBehaviour
     }
 
     //밑에다 주먹을 넣어서 주먹이 발동될때 콜라이더 제네레이터를 쓰자.
-    public void OnCollide(string id,GameObject eventObject)
+    public void OnEvent(GameObject eventObject)
     {
-        if (id == "Ghost")
+        if (eventObject.name.Contains("Ghost"))
         {
             if (isAttack)
             {
@@ -116,7 +122,7 @@ public class GhostPlayer : MonoBehaviour
             }
         }
 
-        if (id == "Fence")
+        if (eventObject.name.Contains("Fence"))
         {
             animator.Play("Wave");
 
@@ -127,16 +133,16 @@ public class GhostPlayer : MonoBehaviour
         }
 
         
-        if (id == "zombie"|| id == "police"|| id == "female")
+        if (eventObject.tag == "CatchableGhost")
         {
             if (isAttack)
             {
-                inventory.Add(id);
+                inventory.Add(eventObject.name);
                 PickUp(eventObject);
             }
         }
 
-        if (id == "checkpoint")
+        if (eventObject.tag =="CheckPoint")
         {
             if (pickUpObject)
             {

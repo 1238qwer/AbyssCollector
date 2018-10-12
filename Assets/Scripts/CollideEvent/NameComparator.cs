@@ -25,6 +25,14 @@ public class NameComparator : MonoBehaviour
         {
             if (data.isMust)
             {
+                foreach (string name in data.names)
+                {
+                    if (gameObject.name.Contains(name))
+                    {
+                        return;
+                    }
+                }
+
                 data.nameEvent.Invoke(gameObject);
                 return;
             }

@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114237042256196980}
   - component: {fileID: 114929781205006452}
   - component: {fileID: 114177026330967442}
+  - component: {fileID: 114734740841416616}
   m_Layer: 0
   m_Name: police
   m_TagString: CatchableGhost
@@ -1166,13 +1167,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: NameComparator+TagData+NameEvent, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - names: []
-    isMust: 1
-    nameEvent:
-      m_PersistentCalls:
-        m_Calls:
         - m_Target: {fileID: 114493520808493852}
           m_MethodName: Turn
           m_Mode: 1
@@ -1211,6 +1205,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: -20}
   speed: 1
+--- !u!114 &114734740841416616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf3cbdc791a67244ad804730ee3c06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagDatas:
+  - tags:
+    - Player
+    - Ghost
+    - Obstacle
+    isMust: 1
+    tagEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114493520808493852}
+          m_MethodName: Turn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: TagComparator+TagData+TagEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114735124997281900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1257,6 +1284,17 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onTriggerExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114177026330967442}
+        m_MethodName: OnEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: ColliderEventGenerator+ColliderEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null

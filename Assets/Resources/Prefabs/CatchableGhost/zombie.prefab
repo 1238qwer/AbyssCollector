@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 114702641440392158}
   - component: {fileID: 114831602906857018}
   - component: {fileID: 114187753605119214}
+  - component: {fileID: 114151634144163014}
   m_Layer: 0
   m_Name: zombie
   m_TagString: CatchableGhost
@@ -1054,6 +1055,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: -20}
   speed: 1
+--- !u!114 &114151634144163014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 108542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf3cbdc791a67244ad804730ee3c06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagDatas:
+  - tags:
+    - Player
+    - Ghost
+    - Obstacle
+    isMust: 1
+    tagEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114086382261289828}
+          m_MethodName: Turn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: TagComparator+TagData+TagEvent, Assembly-CSharp, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
 --- !u!114 &114187753605119214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1094,33 +1128,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: NameComparator+TagData+NameEvent, Assembly-CSharp, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  - names: []
-    isMust: 1
-    nameEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114189631296549768, guid: 5faeddab11885b4489040b2d4ea1f928,
-            type: 2}
-          m_MethodName: Log
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: "\uBB54\uAC00\uC5D0 \uBD80\uB52A\uD614\uAD70"
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 114086382261289828}
-          m_MethodName: Turn
-          m_Mode: 1
+          m_MethodName: SetSpeed
+          m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 0
+            m_FloatArgument: 2
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2

@@ -15,7 +15,9 @@ public class Ghost : MonoBehaviour
 
         chase = Random.Range(0, 3);
         if (chase == 2)
-        {         
+        {
+            if (!player)
+                return;
             player =  GameObject.Find("Player").GetComponent<GhostPlayer>();
             Vector3 dir = player.transform.position - transform.position;
             exerciser.DynamicDirectionChange(dir);

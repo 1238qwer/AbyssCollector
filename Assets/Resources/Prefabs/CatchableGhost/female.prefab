@@ -305,6 +305,7 @@ GameObject:
   - component: {fileID: 114589266089283480}
   - component: {fileID: 114972664032911962}
   - component: {fileID: 114469970837043040}
+  - component: {fileID: 114854965642398844}
   m_Layer: 0
   m_Name: female
   m_TagString: CatchableGhost
@@ -1192,10 +1193,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76f3ae894a3c89b42b9e91f6020ebcee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameDatas:
-  - names: []
+  nameDatas: []
+--- !u!114 &114854965642398844
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 162168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf3cbdc791a67244ad804730ee3c06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagDatas:
+  - tags:
+    - Player
+    - Ghost
+    - Obstacle
     isMust: 1
-    nameEvent:
+    tagEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114040855565943660}
@@ -1209,7 +1225,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: NameComparator+TagData+NameEvent, Assembly-CSharp, Version=0.0.0.0,
+      m_TypeName: TagComparator+TagData+TagEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
 --- !u!114 &114972664032911962
 MonoBehaviour:
