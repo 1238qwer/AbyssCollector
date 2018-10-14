@@ -612,7 +612,7 @@ GameObject:
   - component: {fileID: 114238201458577216}
   - component: {fileID: 114437276685427224}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: WaterGhost
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1279,8 +1279,8 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: dadd7c898398c954e816956383282e97, type: 2}
-  - {fileID: 2100000, guid: dadd7c898398c954e816956383282e97, type: 2}
+  - {fileID: 2100000, guid: 43e198a568adb3c4899d3a6f420e526b, type: 2}
+  - {fileID: 2100000, guid: 43e198a568adb3c4899d3a6f420e526b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

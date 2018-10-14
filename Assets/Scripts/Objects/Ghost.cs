@@ -12,6 +12,7 @@ public class Ghost : MonoBehaviour
     void Start () {
         animator = GetComponent<Animator>();
         exerciser = GetComponent<Exerciser>();
+        animator.Play("run");
 
         chase = Random.Range(0, 3);
         if (chase == 2)
@@ -22,7 +23,7 @@ public class Ghost : MonoBehaviour
             Vector3 dir = player.transform.position - transform.position;
             exerciser.DynamicDirectionChange(dir);
         }
-        animator.Play("run");
+        
     }
 	
 	void Update () {

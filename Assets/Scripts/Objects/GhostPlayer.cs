@@ -41,11 +41,11 @@ public class GhostPlayer : MonoBehaviour
 	
     public void ActiveAttack()
     {
-        state = PlayerState.attack;
+        isAttack = true;
     }
     public void DeactiveAttack()
     {
-        state = PlayerState.run;
+        isAttack = false;
     }
 
 	void Update () {
