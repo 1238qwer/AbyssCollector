@@ -4004,7 +4004,7 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1780057264}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c486ce3f21bec8b47ab60d671415f1c8, type: 3}
@@ -4203,7 +4203,7 @@ GameObject:
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1847599993
 Transform:
   m_ObjectHideFlags: 0
@@ -4233,8 +4233,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  sectionManager: {fileID: 0}
+  ct: 0
+  ct2: 0
+  ct3: 0
   isManual: 0
-  objectDatas: []
 --- !u!1 &1850099199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1828661440704768, guid: 7fdbf1bfc890b5344aa820dbbe6c2e49,
