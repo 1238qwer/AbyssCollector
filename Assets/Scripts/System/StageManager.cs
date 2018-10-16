@@ -9,12 +9,6 @@ public class StageManager : MonoBehaviour {
     public float coolTime;
     private float ct;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update () {
         ct += Time.deltaTime;
         if (ct >= coolTime)

@@ -19,7 +19,7 @@ public class SectionManager : ScriptableObject {
     [Serializable]
     public class SectionData
     {
-        public GameObject Section;
+        public Section section;
         public ObjectData[] Ghost;
         public ObjectData[] Obstacle;
         public ObjectData[] CatchableGhost;
@@ -46,8 +46,9 @@ public class SectionManager : ScriptableObject {
 
         if (isRandomSection)
             index = UnityEngine.Random.Range(0, sectionDatas.Length - 1);
-        
-        GameObject currentSection = Instantiate(sectionDatas[index].Section);
+
+        Section currentSection = sectionDatas[index].section;
+        currentSection.Spawn();
         objectGenerater.OnSectionChange(sectionDatas[index]);
 
         index++;

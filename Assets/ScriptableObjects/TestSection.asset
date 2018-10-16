@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da72ba71ca038e442b92b5202b357e17, type: 3}
+  m_Name: TestSection
+  m_EditorClassIdentifier: 
+  sectionHead: {fileID: 1466961613742300, guid: 2d1d0857b28a25d448455069e8d657af,
+    type: 2}
+  sectionBody:
+  - {fileID: 1921085100058780, guid: 049bd351ca2564b498a179d3e2b11d55, type: 2}
+  - {fileID: 1217904250271184, guid: 654772c6be7c087459ad5d8da70beb74, type: 2}
+  sectionTail: {fileID: 1302089302806964, guid: 182bcc9fb9041a747b914cf73fcc1c34,
+    type: 2}
