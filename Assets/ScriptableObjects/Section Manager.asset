@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Section Manager
   m_EditorClassIdentifier: 
   sectionDatas:
-  - section: {fileID: 11400000, guid: 59661cb2f26c32f43a5c78cec7fbca6c, type: 2}
+  - section: {fileID: 11400000, guid: 73824b9b84839ad4ca4dc1896bf03f83, type: 2}
     Ghost:
     - origin: {fileID: 1997953001238138, guid: ae21d0d672cbc8b46b4f12ddf5e1abe5, type: 2}
       delay: 1
