@@ -55,14 +55,14 @@ public class GhostPlayer : MonoBehaviour
 
         if (transform.localRotation.y >= 0)
         {
-            if (transform.position.x <= 7.6f)
+            if (transform.position.x <= 6.6f)
                 exerciser.DynamicDirectionChange(new Vector3(Mathf.Abs(transform.localRotation.y) * 15, 0, 0));
             else
                 exerciser.DynamicDirectionChange(new Vector3(0, 0, 0));
         }
         if (transform.localRotation.y <= 0)
         {
-            if (transform.position.x >= -7.6f)
+            if (transform.position.x >= -6.6f)
                 exerciser.DynamicDirectionChange(new Vector3(-Mathf.Abs(transform.localRotation.y) * 15, 0, 0));
             else
                 exerciser.DynamicDirectionChange(new Vector3(0, 0, 0));
@@ -116,7 +116,7 @@ public class GhostPlayer : MonoBehaviour
                 animator.Play("Wave");
                 exerciser.Stop(0);
 
-                Destroy(gameObject);
+                //Destroy(gameObject);
 
                 gameOverUI.SetActive(true);
             }
@@ -126,7 +126,7 @@ public class GhostPlayer : MonoBehaviour
         {
             animator.Play("Wave");
 
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
             gameOverUI.SetActive(true);
 
@@ -161,7 +161,7 @@ public class GhostPlayer : MonoBehaviour
         pickUpObject = gameObject;
         gameObject.transform.Rotate(new Vector3(0, 180, 0));
         Animator animator = gameObject.GetComponent<Animator>();
-        animator.Play("run");
+        //animator.Play("run");
         Disappearer disappearer = gameObject.GetComponent<Disappearer>();
         Destroy(disappearer);
     }

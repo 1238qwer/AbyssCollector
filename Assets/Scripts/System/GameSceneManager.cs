@@ -2,26 +2,76 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using System;
 
 public class GameSceneManager : MonoBehaviour {
 
-    public UnityEvent OnSceneLoad;
-    public UnityEvent OnSceneUpdate;
-    public UnityEvent OnSceneExit;
-
-    private void Start()
+    [Serializable]
+    public class SceneData
     {
-        OnSceneLoad.Invoke();
+        [Serializable]
+        public enum SceneName
+        {
+           Arcade,
+           Room          
+        }
+        public SceneName sceneName;
+
+        public UnityEvent onSceneStart;
+        public UnityEvent onScenePlay;
+        public UnityEvent onSceneExit;
     }
 
-    private void Update()
+    public SceneData[] sceneDatas;
+    private string sceneName;
+    private SceneData currentScene;
+
+    private void Awake()
     {
-        OnSceneUpdate.Invoke();
+        DontDestroyOnLoad(gameObject);
+
+        sceneName = GetSceneName();
+        Init();
     }
 
-    private void OnDisable()
+    private void Init()
     {
-        OnSceneExit.Invoke();
+        foreach(SceneData item in sceneDatas)
+        {
+            if (item.sceneName.ToString() == sceneName)
+            {
+                currentScene = item;
+                item.onSceneStart.Invoke();
+            }
+        }
     }
 
+    private void Update ()
+    {
+        foreach (SceneData item in sceneDatas)
+        {
+            if (item.sceneName.ToString() == sceneName)
+            {
+                item.onScenePlay.Invoke();
+            }
+        }
+
+        if (GetSceneName() != sceneName)
+        {
+            currentScene.onSceneExit.Invoke();
+            sceneName = GetSceneName();
+            Init();
+        }
+    }
+
+    private string GetSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }

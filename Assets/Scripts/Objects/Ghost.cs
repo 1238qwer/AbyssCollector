@@ -14,6 +14,8 @@ public class Ghost : MonoBehaviour
         exerciser = GetComponent<Exerciser>();
         animator.Play("run");
 
+        transform.Rotate(new Vector3(-90, 180, 0));
+
         chase = Random.Range(0, 3);
         if (chase == 2)
         {

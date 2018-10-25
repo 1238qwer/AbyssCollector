@@ -14,31 +14,15 @@ MonoBehaviour:
   sectionDatas:
   - section: {fileID: 11400000, guid: 73824b9b84839ad4ca4dc1896bf03f83, type: 2}
     Ghost:
-    - origin: {fileID: 1997953001238138, guid: ae21d0d672cbc8b46b4f12ddf5e1abe5, type: 2}
+    - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
       delay: 1
       percentage: 40
-    Obstacle:
-    - origin: {fileID: 1764245822938992, guid: 39f6e0f1d76de1e4db395554aa6b4aef, type: 2}
-      delay: 1
-      percentage: 40
+    Obstacle: []
     CatchableGhost:
-    - origin: {fileID: 108542, guid: 14fb53f2cd63dc748a001cc7b31bf21d, type: 2}
-      delay: 3
-      percentage: 20
-    - origin: {fileID: 162168, guid: 2db03e7c8a8135146b280e5da7e0289c, type: 2}
-      delay: 3
-      percentage: 20
-  - section: {fileID: 0}
-    Ghost:
-    - origin: {fileID: 1997953001238138, guid: da0add36a2b8fd14f9ce04a49619f657, type: 2}
-      delay: 1
-      percentage: 40
-    Obstacle:
-    - origin: {fileID: 1764245822938992, guid: 4497f0779a0097045b0607bceede69d5, type: 2}
-      delay: 1
-      percentage: 40
-    CatchableGhost:
-    - origin: {fileID: 108018, guid: 47a3741b253f088469eedd6d403dd89a, type: 2}
+    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
       delay: 3
       percentage: 30
+    - origin: {fileID: 1613082956631610, guid: a6b177effb2b75f4fb7f3f191c73c6f9, type: 2}
+      delay: 3
+      percentage: 20
   isRandomSection: 0

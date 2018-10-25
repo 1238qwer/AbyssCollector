@@ -35,12 +35,12 @@ public class SectionManager : ScriptableObject {
         index = 0;
     }
 
-    public void Indexchogihwa()
-    {
-        index = 0;
-    }
+    //public void Indexchogihwa()
+    //{
+    //    index = 0;
+    //}
 
-    public void NextSectionSpawn()
+    public void NextSectionSpawn(GameObject gameObject)
     {
         objectGenerater = GameObject.Find("Generator").GetComponent<ObjectGenerater>();
 
@@ -48,7 +48,8 @@ public class SectionManager : ScriptableObject {
             index = UnityEngine.Random.Range(0, sectionDatas.Length - 1);
 
         Section currentSection = sectionDatas[index].section;
-        currentSection.Spawn();
+        float nextStageDepth = gameObject.transform.position.z + 60;
+        currentSection.Spawn(nextStageDepth);
         objectGenerater.OnSectionChange(sectionDatas[index]);
 
         index++;

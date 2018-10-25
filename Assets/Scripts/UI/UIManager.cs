@@ -8,11 +8,11 @@ public class UIManager : ScriptableObject {
 
     public void GotoRoomScene()
     {
-        SceneManager.LoadScene(0);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void GotoCollectScene()
     {
-        SceneManager.LoadScene("Arcade");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Arcade");
     }
 }

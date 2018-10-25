@@ -9,9 +9,9 @@ public class ObjectGenerater : MonoBehaviour {
     [SerializeField] private SectionManager sectionManager;
 
     float rnd;
-    public float ct;
-    public float ct2;
-    public float ct3;
+    private float ct;
+    private float ct2;
+    private float ct3;
 
     public bool isManual;
 
@@ -41,7 +41,7 @@ public class ObjectGenerater : MonoBehaviour {
 
     private void Start()
     {
-        sectionManager.NextSectionSpawn();
+        //sectionManager.NextSectionSpawn();
     }
     void Update () {
 
@@ -55,9 +55,8 @@ public class ObjectGenerater : MonoBehaviour {
                 rnd = UnityEngine.Random.Range(0, 100);
                 if (rnd <= item.percentage)
                 {
-                    GameObject trap = 
+                    GameObject trap =
                         Instantiate(item.origin, generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position, Quaternion.identity);
-                    trap.transform.rotation = new Quaternion(0, 180, 0, 0);
                     ct = 0;
                 }
             }
@@ -74,7 +73,7 @@ public class ObjectGenerater : MonoBehaviour {
                 {
                     GameObject trap =
                         Instantiate(item.origin, generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position, Quaternion.identity);
-                    trap.transform.rotation = new Quaternion(0, 180, 0, 0);
+                    trap.transform.Rotate(-90, 180, 0);
                     ct2 = 0;
                 }
             }
@@ -90,7 +89,7 @@ public class ObjectGenerater : MonoBehaviour {
                 {
                     GameObject trap =
                         Instantiate(item.origin, generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position, Quaternion.identity);
-                    trap.transform.rotation = new Quaternion(0, 180, 0, 0);
+                    //trap.transform.rotation = new Quaternion(0, 180, 0, 0);
                     ct3 = 0;
                 }
             }

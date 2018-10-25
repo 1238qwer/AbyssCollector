@@ -74,6 +74,30 @@ public class Exerciser : MonoBehaviour {
         DynamicDirectionChange(transform.forward);
     }
 
+    //private bool turn;
+    //public void Turn(float time)
+    //{
+    //    right.eulerAngles = new Vector3(0, UnityEngine.Random.Range(90, 180), 0);
+
+    //    turn = true;
+
+    //    this.time = time;
+    //    StartCoroutine(TurnDirection());
+    //}
+
+    //private Quaternion right = Quaternion.identity;
+
+    //private float turnTime;
+    //private float time;
+    //public IEnumerator TurnDirection()
+    //{
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, right, Time.deltaTime * 5.0f);
+
+    //    yield return null;
+
+    //    StartCoroutine(TurnDirection());
+    //}
+
     private float followTime;
     public void Follow(GameObject gameObject)
     {

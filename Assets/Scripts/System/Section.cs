@@ -12,27 +12,31 @@ public class Section : ScriptableObject {
     private float depth;
 
     private float testFloat;
+    private float currentFloat;
 
     private void OnEnable()
     {
         testFloat = 30;
-        depth = 0;
+        depth = 0; //리셋함수로
     }
 
-    public void Spawn()
+    public void Spawn(float nextStageDepth)
     {
-        GameObject currentSection = Instantiate(sectionHead,new Vector3(0,0,0),Quaternion.identity);
+        depth = 0;
+        GameObject currentSection = Instantiate(sectionHead,new Vector3(0,-1, nextStageDepth),Quaternion.identity);
+
+        currentFloat = currentSection.transform.position.z;
 
         foreach (GameObject item in sectionBody)
         {
             depth += testFloat;
 
-            currentSection = Instantiate(item, new Vector3(0, 0, 0 + depth),Quaternion.identity);          
+            currentSection = Instantiate(item, new Vector3(0 , -1, currentFloat + depth),Quaternion.identity);          
         }
 
-        depth += testFloat;
+        //depth += testFloat;
 
         currentSection = 
-            Instantiate(sectionTail,new Vector3(0, 0, 0 + depth),Quaternion.identity);
+            Instantiate(sectionTail,new Vector3(0,-1, currentFloat + depth),Quaternion.identity);
     }
 }
