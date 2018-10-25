@@ -24,11 +24,10 @@ GameObject:
   - component: {fileID: 54716320084199844}
   - component: {fileID: 114272831690892884}
   - component: {fileID: 114642050352075942}
-  - component: {fileID: 114805510384060670}
   - component: {fileID: 64667132521578684}
   - component: {fileID: 95338760734274880}
   m_Layer: 0
-  m_Name: ghost_001
+  m_Name: Ghost_001
   m_TagString: Ghost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,17 +160,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68e3ad3c2237be48a566a48d8c7dd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: -50}
+  direction: {x: 0, y: 0, z: -30}
   speed: 1
---- !u!114 &114805510384060670
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1732681233490720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb22aef7048310c4a899d1359da1e7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 10

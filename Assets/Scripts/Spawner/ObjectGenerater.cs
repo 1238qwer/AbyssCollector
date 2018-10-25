@@ -13,6 +13,10 @@ public class ObjectGenerater : MonoBehaviour {
     private float ct2;
     private float ct3;
 
+    private ObjectPooler ghostPooler;
+    private ObjectPooler catchablePooler;
+    private ObjectPooler obstaclePooler;
+
     public bool isManual;
 
     private List<SectionManager.ObjectData> ghostDatas = new List<SectionManager.ObjectData>();
@@ -28,19 +32,25 @@ public class ObjectGenerater : MonoBehaviour {
         foreach(var item in sectionData.Ghost)
         {
             ghostDatas.Add(item);
+            ghostPooler.AutoReturnPool(item.origin, 10, 5);
         }
         foreach (var item in sectionData.CatchableGhost)
         {
             catchableGhostDatas.Add(item);
+            catchablePooler.AutoReturnPool(item.origin, 3, 10);
         }
         foreach (var item in sectionData.Obstacle)
         {
             obstacleDatas.Add(item);
+            obstaclePooler.AutoReturnPool(item.origin, 10, 10);
         }
     }
 
-    private void Start()
+    private void Awake()
     {
+        ghostPooler = new ObjectPooler();
+        catchablePooler = new ObjectPooler();
+        obstaclePooler = new ObjectPooler();
         //sectionManager.NextSectionSpawn();
     }
     void Update () {
@@ -51,13 +61,17 @@ public class ObjectGenerater : MonoBehaviour {
         ct += Time.deltaTime;
         foreach(var item in ghostDatas)
         {
-            if (ct >= item.delay)            {
+            if (ct >= item.delay)
+            {
                 rnd = UnityEngine.Random.Range(0, 100);
                 if (rnd <= item.percentage)
                 {
-                    GameObject trap =
-                        Instantiate(item.origin, generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position, Quaternion.identity);
+                    GameObject trap = ghostPooler.GetPool();
+                    trap.transform.position = generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position;
                     ct = 0;
+
+                    Exerciser trapRig = trap.GetComponent<Exerciser>();
+                    trapRig.DynamicDirectionChange(new Vector3(0, 0, -30));
                 }
             }
         }
@@ -71,9 +85,8 @@ public class ObjectGenerater : MonoBehaviour {
                 rnd = UnityEngine.Random.Range(0, 100);
                 if (rnd <= item.percentage)
                 {
-                    GameObject trap =
-                        Instantiate(item.origin, generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position, Quaternion.identity);
-                    trap.transform.Rotate(-90, 180, 0);
+                    GameObject trap = catchablePooler.GetPool();
+                    trap.transform.position = generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position;
                     ct2 = 0;
                 }
             }

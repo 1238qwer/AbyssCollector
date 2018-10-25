@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 54751644693117706}
   - component: {fileID: 65966096405754910}
   - component: {fileID: 114397196841867058}
-  - component: {fileID: 114365530708359560}
   m_Layer: 0
   m_Name: Zombie_girl_F
   m_TagString: CatchableGhost
@@ -38,13 +37,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851294358832298}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 60, y: 60, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!23 &23858715121749690
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -114,18 +113,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.03, z: 0.03}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114365530708359560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1851294358832298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb22aef7048310c4a899d1359da1e7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 20
 --- !u!114 &114397196841867058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68e3ad3c2237be48a566a48d8c7dd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: -20}
+  direction: {x: 0, y: 0, z: -15}
   speed: 1

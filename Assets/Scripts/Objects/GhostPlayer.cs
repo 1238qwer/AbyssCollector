@@ -18,6 +18,7 @@ public class GhostPlayer : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;//ui매니저로
     [SerializeField] private MouseLook mouseLook;   
     [SerializeField] private GameObject punchParticle;
+    [SerializeField] private Camera mainCam;
     
     [SerializeField] private Transform attackPos;
     [SerializeField] private Inventory inventory;
@@ -26,7 +27,7 @@ public class GhostPlayer : MonoBehaviour
     private ObjectPooler objectPooler;
     private Exerciser exerciser;
     private Animator animator;
-    private bool isAttack;
+    public bool isAttack;
     private GameObject pickUpObject;
     private float score;
     private float elpaseTime;
@@ -46,9 +47,11 @@ public class GhostPlayer : MonoBehaviour
     public void DeactiveAttack()
     {
         isAttack = false;
+        animator.Play("run");
     }
 
 	void Update () {
+        
         score += Time.deltaTime * 10;
         int intScore = (int)score;
         scoreText.text = intScore.ToString() + "M";
@@ -67,12 +70,6 @@ public class GhostPlayer : MonoBehaviour
             else
                 exerciser.DynamicDirectionChange(new Vector3(0, 0, 0));
         }
-
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            animator.Play("run");
-        }
         if (Input.GetMouseButtonUp(0))
         {
             animator.Play("attack");
@@ -88,10 +85,11 @@ public class GhostPlayer : MonoBehaviour
 
     public void LateUpdate()
     {
+        mainCam.transform.position = new Vector3(transform.position.x - 5, mainCam.transform.position.y, mainCam.transform.position.z);
         if (pickUpObject)
         {
             pickUpObject.transform.localPosition = new Vector3(transform.localPosition.x + 1.1f, pickUpObject.transform.localPosition.y, transform.localPosition.z-0.5f);
-            pickUpObject.transform.rotation = transform.rotation;
+ 
         }
     }
 
@@ -108,7 +106,7 @@ public class GhostPlayer : MonoBehaviour
                 Exerciser exerciser = eventObject.GetComponent<Exerciser>();
 
                 trap.animator.Play("Jump");
-                trap.transform.Rotate(-50, 0, 0);
+                //trap.transform.Rotate(-50, 0, 0);
                 exerciser.DynamicDirectionChange(new Vector3(Random.Range(-50, 50), 40, 70));
             }
             else
@@ -158,11 +156,18 @@ public class GhostPlayer : MonoBehaviour
 
     public void PickUp(GameObject gameObject)
     {
-        pickUpObject = gameObject;
-        gameObject.transform.Rotate(new Vector3(0, 180, 0));
+        if (pickUpObject == null || pickUpObject.name != gameObject.name)
+        {
+            pickUpObject = Instantiate(gameObject, transform.position, Quaternion.identity);
+            pickUpObject.transform.Rotate(-90, 0, 0);
+        }
+
         Animator animator = gameObject.GetComponent<Animator>();
+
+        gameObject.SetActive(false);
+        pickUpObject.SetActive(true);
+
+        
         //animator.Play("run");
-        Disappearer disappearer = gameObject.GetComponent<Disappearer>();
-        Destroy(disappearer);
     }
 }

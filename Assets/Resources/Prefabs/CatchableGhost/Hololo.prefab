@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 54320515864223214}
   - component: {fileID: 65752772588122208}
   - component: {fileID: 114105373702647724}
-  - component: {fileID: 114618284149684438}
   m_Layer: 0
   m_Name: Hololo
   m_TagString: CatchableGhost
@@ -183,17 +182,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68e3ad3c2237be48a566a48d8c7dd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: -20}
+  direction: {x: 0, y: 0, z: -15}
   speed: 1
---- !u!114 &114618284149684438
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1613082956631610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb22aef7048310c4a899d1359da1e7f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 20

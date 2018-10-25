@@ -26,3 +26,4 @@ MonoBehaviour:
       delay: 3
       percentage: 20
   isRandomSection: 0
+  isSecondSection: 1

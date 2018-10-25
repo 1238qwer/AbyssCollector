@@ -29,31 +29,47 @@ public class SectionManager : ScriptableObject {
     public bool isRandomSection;
 
     private int index;
+    private bool isSectionChange;
+    public bool isSecondSection;
 
     private void OnDisable()
     {
         index = 0;
+        isSecondSection = false;
     }
-
-    //public void Indexchogihwa()
-    //{
-    //    index = 0;
-    //}
 
     public void NextSectionSpawn(GameObject gameObject)
     {
-        objectGenerater = GameObject.Find("Generator").GetComponent<ObjectGenerater>();
+        int oldIndex = index;
+
+        objectGenerater = GameObject.Find("Generator").GetComponent<ObjectGenerater>();    
 
         if (isRandomSection)
+        {
             index = UnityEngine.Random.Range(0, sectionDatas.Length - 1);
+            
+        }
 
         Section currentSection = sectionDatas[index].section;
-        float nextStageDepth = gameObject.transform.position.z + 60;
+
+        float nextStageDepth;
+
+        if (isSecondSection)
+            nextStageDepth = gameObject.transform.position.z + 60;
+        else
+            nextStageDepth = gameObject.transform.position.z;
+
         currentSection.Spawn(nextStageDepth);
-        objectGenerater.OnSectionChange(sectionDatas[index]);
 
         index++;
+
         if (index >= sectionDatas.Length)
             index = 0;
+
+        if (index != oldIndex || !isSecondSection)
+        {
+            objectGenerater.OnSectionChange(sectionDatas[index]);
+            isSecondSection = true;
+        }
     }
 }

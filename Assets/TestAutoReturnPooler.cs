@@ -17,7 +17,6 @@ public class TestAutoReturnPooler : MonoBehaviour {
         ct += Time.deltaTime;
         if (ct >= 10.0f)
         {
-            objectPooler.ReturnPool();
             ct = 0;
         }
 	}
