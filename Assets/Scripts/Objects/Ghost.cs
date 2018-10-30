@@ -6,9 +6,10 @@ public class Ghost : MonoBehaviour
 {
 
     [HideInInspector] public Animator animator;
-    int chase;
+    private int chase;
     private GhostPlayer player;
     private Exerciser exerciser;
+
     void Start () {
         animator = GetComponent<Animator>();
         exerciser = GetComponent<Exerciser>();
@@ -21,19 +22,16 @@ public class Ghost : MonoBehaviour
         {
             if (!player)
                 return;
+
             player =  GameObject.Find("Player").GetComponent<GhostPlayer>();
             Vector3 dir = player.transform.position - transform.position;
             exerciser.DynamicDirectionChange(dir);
-        }
-        
-    }
-	
-	void Update () {
-
+        }    
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Hit()
     {
-
+        transform.Translate(0, 1, 0);
+        exerciser.DynamicDirectionChange(new Vector3(0, 0, -15));
     }
 }

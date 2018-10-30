@@ -32,17 +32,17 @@ public class ObjectGenerater : MonoBehaviour {
         foreach(var item in sectionData.Ghost)
         {
             ghostDatas.Add(item);
-            ghostPooler.AutoReturnPool(item.origin, 10, 5);
+            ghostPooler.AutoReturnPool(item.origin, 10,5);
         }
         foreach (var item in sectionData.CatchableGhost)
         {
             catchableGhostDatas.Add(item);
-            catchablePooler.AutoReturnPool(item.origin, 3, 10);
+            catchablePooler.Pool(item.origin, 10);
         }
         foreach (var item in sectionData.Obstacle)
         {
             obstacleDatas.Add(item);
-            obstaclePooler.AutoReturnPool(item.origin, 10, 10);
+            obstaclePooler.Pool(item.origin, 10);
         }
     }
 

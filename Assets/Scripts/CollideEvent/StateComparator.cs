@@ -6,36 +6,21 @@ using System;
 
 public class StateComparator : MonoBehaviour {
 
-    //[Serializable]
-    //public class TagData
-    //{
-    //    [Serializable]
-    //    public class TagEvent : UnityEvent<GameObject> { }
+    private string currentState;
 
-    //    public string[] tags;
-    //    public bool isMust;
-    //    public TagEvent tagEvent;
-    //}
+    [SerializeField] private UnityEvent trueEvents;
+    [SerializeField] private UnityEvent falseEvents;
 
-    //public TagData[] tagDatas;
+    public void SetState(string state)
+    {
+        currentState = state;
+    }
 
-    //public void OnEvent(Enum gameObject)
-    //{
-    //    foreach (TagData data in tagDatas)
-    //    {
-    //        if (data.isMust)
-    //        {
-    //            data.tagEvent.Invoke(gameObject);
-    //            return;
-    //        }
-
-    //        foreach (string tag in data.tags)
-    //        {
-    //            if (tag == gameObject.tag)
-    //            {
-    //                data.tagEvent.Invoke(gameObject);
-    //            }
-    //        }
-    //    }
-    //}
+    public void OnEvent(string state)
+    {
+        if (currentState == state)
+            trueEvents.Invoke();
+        else
+            falseEvents.Invoke();
+    }
 }

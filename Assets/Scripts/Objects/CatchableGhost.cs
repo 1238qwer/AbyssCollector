@@ -3,18 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Exerciser))]
+[RequireComponent(typeof(Disappearer))]
 [RequireComponent(typeof(ColliderEventGenerator))]
 [RequireComponent(typeof(NameComparator))]
+[RequireComponent(typeof(TagComparator))]
 public class CatchableGhost : MonoBehaviour
 {
     [HideInInspector] public Animator animator;
 
     private Vector3 direction;
     private Exerciser exerciser;
+    private Disappearer disappearer;
     private bool isArcadeGameing;
     private float ct;
 
     void Awake () {
+        disappearer = GetComponent<Disappearer>();
         animator = GetComponent<Animator>();
         exerciser = GetComponent<Exerciser>();
 	}
@@ -26,6 +30,7 @@ public class CatchableGhost : MonoBehaviour
 
         if (isArcadeGameing)
         {
+            //animator.Play("idle");
             if (transform.position.x >= 0)
             {
                 direction =
@@ -45,8 +50,27 @@ public class CatchableGhost : MonoBehaviour
             exerciser.DynamicDirectionChange(transform.forward);
             Destroy(disappearer);
             exerciser.SetSpeed(1f);
-            animator.Play("walk");
+            animator.Play("run");
         }
+    }
+
+    public void Catched()
+    {
+        transform.Rotate(new Vector3(0, 180, 0));
+        animator.Play("capture");
+        disappearer.Deactivate = true;
+    }
+
+    public void Decatched()
+    {
+        transform.Rotate(new Vector3(0, 180, 0));
+        animator.Play("idle");
+        disappearer.Deactivate = false;
+    }
+
+    public void OnCheckPoint()
+    {
+
     }
 
 }

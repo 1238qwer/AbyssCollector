@@ -4,12 +4,22 @@ using UnityEngine;
 
 public class Disappearer : MonoBehaviour {
 
+    public bool Deactivate;
     public float lifeTime;
     private float currentTime;
 
 	void Update () {
+
+        if (Deactivate)
+        {
+            return;
+        }
+
         currentTime += Time.deltaTime;
         if (currentTime >= lifeTime)
-            Destroy(gameObject);
-	}
+        {
+            gameObject.SetActive(false);
+            currentTime = 0;
+        }
+    }
 }
