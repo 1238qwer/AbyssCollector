@@ -2,25 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class InputManager : MonoBehaviour {
 
-    [SerializeField] private UnityEvent onGetKey;
-    [SerializeField] private UnityEvent onGetKeyDown;
-    [SerializeField] private UnityEvent onGetKeyUp;
+    private GhostPlayer ghostPlayer;
+    private MouseLook mouseLook;
 
-	void Update () {
-		//if (AirVRInput.Get(rig,AirVRInput.Touchpad.Button.Touch))
-  //      {
-  //          onGetKey.Invoke();
-  //      }
-  //      if (AirVRInput.GetDown(rig, AirVRInput.Touchpad.Button.Touch))
-  //      {
-  //          onGetKeyDown.Invoke();
-  //      }
-  //      if (AirVRInput.GetUp(rig, AirVRInput.Touchpad.Button.Touch))
-  //      {
-  //          onGetKeyUp.Invoke();
-  //      }
+    private void Awake()
+    {
+        ghostPlayer = GetComponent<GhostPlayer>();
+        mouseLook = GetComponent<MouseLook>();
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonUp(0))
+        {
+            ghostPlayer.Attack();
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            mouseLook.LookingMouse();
+        }
+    }
+    //   [Serializable]
+    //   public class KeyData
+    //   {
+    //       public string key;
+    //       public UnityEvent onGetKey;
+    //       public UnityEvent onGetKeyDown;
+    //       public UnityEvent onGetKeyUp;
+    //   }
+
+    //   public KeyData[] keyDatas;
+
+
+    //void Update () {
+
+    //       if (Input.anyKey)
+    //       {
+    //           foreach(KeyData data in keyDatas)
+    //           {
+    //               if (Input.an)
+    //           }
+    //       }
+
+    //   }
+
 }

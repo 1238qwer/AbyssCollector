@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour{
 
+    private GameObject poolWrapper;
+
     public class PoolData
     {
         public GameObject origin;
@@ -24,15 +26,27 @@ public class ObjectPooler : MonoBehaviour{
     public List<PoolData> pool = new List<PoolData>();
 
     public void Awake()
-    {
+    {      
         pool.Clear();
+    }
+
+    public void WrapperInit(string name)
+    {
+        if (!poolWrapper)
+            poolWrapper = new GameObject(name + ".poolWrapper");
     }
 
     public void Pool(GameObject gameObject, int num)
     {
+        WrapperInit(gameObject.name);
+
         for (int i = 0; i < num; i++)
         {
-            PoolData tmp = new PoolData(Instantiate(gameObject));
+            GameObject obj = Instantiate(gameObject);
+
+            obj.transform.parent = poolWrapper.transform;
+
+            PoolData tmp = new PoolData(obj);
             tmp.origin.SetActive(false);
             pool.Add(tmp);
         }
@@ -40,15 +54,28 @@ public class ObjectPooler : MonoBehaviour{
 
     public void AutoReturnPool(GameObject gameObject,int num,float lifeTime)
     {
+        WrapperInit(gameObject.name);
+
         for (int i=0; i<num; i++)
         {
-            PoolData tmp = new PoolData(Instantiate(gameObject),lifeTime);
+            GameObject obj = Instantiate(gameObject);
+
+            obj.transform.parent = poolWrapper.transform;
+
+            PoolData tmp = new PoolData(obj, lifeTime);
             tmp.origin.SetActive(false);
             pool.Add(tmp);
         }
+      
+        GameObject autoReturnPoolerObj = GameObject.Find("AutoReturnPooler");
+        AutoReturnPooler autoReturnPooler = null;
 
-        AutoReturnPooler autoReturnPooler = new GameObject("AutoReturnPooler").AddComponent<AutoReturnPooler>();
-        autoReturnPooler.Init(pool);
+        if (!autoReturnPoolerObj)
+            autoReturnPooler = new GameObject("AutoReturnPooler").AddComponent<AutoReturnPooler>();
+        else
+            autoReturnPooler = autoReturnPoolerObj.GetComponent<AutoReturnPooler>();
+
+        autoReturnPooler.Add(pool);
     }
 
     public GameObject GetPool()
@@ -64,7 +91,28 @@ public class ObjectPooler : MonoBehaviour{
 
         try
         {
-            return pool[pool.Count - 1].origin;
+            return pool[0].origin;
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public GameObject GetPool(string name)
+    {
+        foreach (PoolData item in pool)
+        {
+            if (item.origin.activeSelf == false && item.origin.name.Contains(name))
+            {
+                item.origin.SetActive(true);
+                return item.origin;
+            }
+        }
+
+        try
+        {
+            return pool[0].origin;
         }
         catch
         {

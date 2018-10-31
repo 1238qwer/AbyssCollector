@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-
     [HideInInspector] public Animator animator;
     private int chase;
     private GhostPlayer player;
     private Exerciser exerciser;
 
     void Start () {
+        player = GameObject.Find("Player").GetComponent<GhostPlayer>();
         animator = GetComponent<Animator>();
         exerciser = GetComponent<Exerciser>();
-        animator.Play("run");
 
         transform.Rotate(new Vector3(-90, 180, 0));
 
@@ -23,15 +22,14 @@ public class Ghost : MonoBehaviour
             if (!player)
                 return;
 
-            player =  GameObject.Find("Player").GetComponent<GhostPlayer>();
+            Debug.Log("추격");
             Vector3 dir = player.transform.position - transform.position;
-            exerciser.DynamicDirectionChange(dir);
+            exerciser.DynamicDirectionChange(dir / 2);
         }    
     }
 
     public void Hit()
     {
-        transform.Translate(0, 1, 0);
-        exerciser.DynamicDirectionChange(new Vector3(0, 0, -15));
+        transform.Translate(0, 0.5f, 0);
     }
 }

@@ -1,0 +1,4 @@
+StateM state라는 오브젝트에다가 붙임. 밑에는 idle , attack등 실제 스테이트가 있음. 얘들은 모두 유니티 이벤트스테이트라고 유니티이벤트 onEnter, onStay, onExit를 포워딩해놓은 애들.
+statem은 처음엔 이닛스테이트의 onenter와 onupdate를 호출중이며 변경되었을때는 바뀐애의 해당 함수를 계속 호출함.
+
+state는 기본적인 이벤트스테이트와 걔를 상속받은 attackstate등이 있는데, 기본적인 onenter등은 제공하면서 추가로 사거리안에 들어왔는지등을 판단할수있음.

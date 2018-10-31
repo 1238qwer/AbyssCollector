@@ -1,29 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AutoReturnPooler : MonoBehaviour {
 
-    private List<ObjectPooler.PoolData> autoReturnGameObjects = new List<ObjectPooler.PoolData>();
-    private float originLiftTime;
-
-	public void Init (List<ObjectPooler.PoolData> autoReturnGameObjects)
+    [Serializable]
+    public class ReturnPoolData
     {
-        this.autoReturnGameObjects = autoReturnGameObjects;
-        originLiftTime = autoReturnGameObjects[0].lifeTime;
+        public List<ObjectPooler.PoolData> autoReturnGameObjects = new List<ObjectPooler.PoolData>();
+        public float originLiftTime;
+
+        public ReturnPoolData(List<ObjectPooler.PoolData> pool,float originLiftTime)
+        {
+            this.autoReturnGameObjects = pool;
+            this.originLiftTime = originLiftTime;
+        }
+    }
+
+    public List<ReturnPoolData> returnPoolDatas = new List<ReturnPoolData>();
+
+	public void Add(List<ObjectPooler.PoolData> autoReturnGameObjects)
+    {
+        ReturnPoolData tmp = new ReturnPoolData(autoReturnGameObjects, autoReturnGameObjects[0].lifeTime);
+        returnPoolDatas.Add(tmp);
 	}
 
     void Update()
     {
-        foreach (ObjectPooler.PoolData item in autoReturnGameObjects)
+        foreach (ReturnPoolData item in returnPoolDatas)
         {
-            if (item.origin.activeSelf == true)
+            foreach (ObjectPooler.PoolData data in item.autoReturnGameObjects)
             {
-                item.lifeTime -= Time.deltaTime;
-                if (item.lifeTime <= 0)
+                if (data.origin.activeSelf == true)
                 {
-                    item.origin.SetActive(false);
-                    item.lifeTime = originLiftTime;
+                    data.lifeTime -= Time.deltaTime;
+                    if (data.lifeTime <= 0)
+                    {
+                        data.origin.SetActive(false);
+                        data.lifeTime = item.originLiftTime;
+                    }
                 }
             }
         }

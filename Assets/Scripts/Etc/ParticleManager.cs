@@ -15,14 +15,14 @@ public class ParticleManager : MonoBehaviour {
     private ObjectPooler snowFXpooler;
     private ObjectPooler lightFXpooler;
 
-    void Awake () {
+    void OnEnable () {
         DontDestroyOnLoad(this);
 
         hitFXpooler = new ObjectPooler();
         ghostDispearFXpooler = new ObjectPooler();
 
         hitFXpooler.AutoReturnPool(hitFX, 5,2);
-        ghostDispearFXpooler.AutoReturnPool(ghostDispearFX, 5,2);
+        ghostDispearFXpooler.AutoReturnPool(ghostDispearFX, 5,4);
     }
 	
 	public void CreateHitFX(Vector3 spawnPos)

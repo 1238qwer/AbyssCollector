@@ -20,7 +20,7 @@ public class ObjectGenerater : MonoBehaviour {
     public bool isManual;
 
     private List<SectionManager.ObjectData> ghostDatas = new List<SectionManager.ObjectData>();
-    private List<SectionManager.ObjectData> catchableGhostDatas = new List<SectionManager.ObjectData>();
+    public List<SectionManager.ObjectData> catchableGhostDatas = new List<SectionManager.ObjectData>();
     private List<SectionManager.ObjectData> obstacleDatas = new List<SectionManager.ObjectData>();
 
     public void OnSectionChange(SectionManager.SectionData sectionData)
@@ -51,7 +51,6 @@ public class ObjectGenerater : MonoBehaviour {
         ghostPooler = new ObjectPooler();
         catchablePooler = new ObjectPooler();
         obstaclePooler = new ObjectPooler();
-        //sectionManager.NextSectionSpawn();
     }
     void Update () {
 
@@ -85,7 +84,7 @@ public class ObjectGenerater : MonoBehaviour {
                 rnd = UnityEngine.Random.Range(0, 100);
                 if (rnd <= item.percentage)
                 {
-                    GameObject trap = catchablePooler.GetPool();
+                    GameObject trap = catchablePooler.GetPool(item.origin.name);
                     trap.transform.position = generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position;
                     ct2 = 0;
                 }

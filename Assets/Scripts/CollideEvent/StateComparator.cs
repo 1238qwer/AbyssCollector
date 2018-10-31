@@ -6,21 +6,43 @@ using System;
 
 public class StateComparator : MonoBehaviour {
 
+    private StateManager stateManager;
     private string currentState;
 
-    [SerializeField] private UnityEvent trueEvents;
-    [SerializeField] private UnityEvent falseEvents;
-
-    public void SetState(string state)
+    [Serializable]
+    public class StateData
     {
-        currentState = state;
+        [Serializable]
+        public class StateEvent : UnityEvent<GameObject> { }
+
+        public string[] compareState;
+        public StateEvent trueEvent;
+        public StateEvent falseEvent;
     }
 
-    public void OnEvent(string state)
+    public StateData[] stateDatas;
+
+    private void Awake()
     {
-        if (currentState == state)
-            trueEvents.Invoke();
-        else
-            falseEvents.Invoke();
+        stateManager = GetComponent<StateManager>();
+    }
+
+    public void OnEvent(GameObject gameObject)
+    {
+        currentState = stateManager.State;
+
+        foreach (StateData data in stateDatas)
+        {
+            foreach(string state in data.compareState)
+            {
+                if (currentState == state)
+                {
+                    data.trueEvent.Invoke(gameObject);
+                    return;
+                }
+
+                data.falseEvent.Invoke(gameObject);
+            }
+        }
     }
 }
