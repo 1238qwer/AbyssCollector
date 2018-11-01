@@ -11,6 +11,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da72ba71ca038e442b92b5202b357e17, type: 3}
   m_Name: TestSection
   m_EditorClassIdentifier: 
+  spawnData:
+    ghost:
+    - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
+      delay: 0.2
+      percentage: 10
+    obstacle: []
+    catchable:
+    - origin: {fileID: 1838988807879564, guid: 76e3de04750859347856aa8890eacf3d, type: 2}
+      delay: 3
+      percentage: 30
+    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
+      delay: 3
+      percentage: 30
   sectionHead: {fileID: 1995030828420602, guid: af2ace7616d19cc4b876b288d4e22849,
     type: 2}
   sectionBody:
@@ -18,6 +31,11 @@ MonoBehaviour:
   - {fileID: 1308853572312714, guid: 721333bd5ade7bc40b818dffe50506aa, type: 2}
   - {fileID: 1441012223614156, guid: f05b96c4d37f79d48a2e8d59223323ec, type: 2}
   - {fileID: 1308853572312714, guid: 721333bd5ade7bc40b818dffe50506aa, type: 2}
+  - {fileID: 1441012223614156, guid: f05b96c4d37f79d48a2e8d59223323ec, type: 2}
+  - {fileID: 1308853572312714, guid: 721333bd5ade7bc40b818dffe50506aa, type: 2}
   sectionTail: {fileID: 1569793417843800, guid: a40b771792ada4441967a34c8283ee3d,
     type: 2}
   secondSectionDepth: 45
+  minSpawnPos: {x: -6, y: 0, z: 50}
+  maxSpawnPos: {x: 6, y: 0, z: 50}
+  alreadySpawned: 0

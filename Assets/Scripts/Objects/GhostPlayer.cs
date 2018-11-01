@@ -6,14 +6,21 @@ public class GhostPlayer : MonoBehaviour
 {    
     [SerializeField] private Inventory inventory;
     [SerializeField] private ParticleManager particleManager;
+    [SerializeField] private List<GameObject> catchedGhostes = new List<GameObject>();
+
+    private GameObject currentPickup;
 
     private StateManager stateManager;
     private Animator animator;
     private CatchableGhost PickUpGhost;
     
-    void Awake () {
+    void Awake ()
+    {
         stateManager = GetComponentInChildren<StateManager>();
         animator = GetComponentInChildren<Animator>();
+
+        foreach (GameObject item in catchedGhostes)
+            item.SetActive(false);
     }
 	
     public void ActiveAttack()
@@ -67,17 +74,32 @@ public class GhostPlayer : MonoBehaviour
         }
     }
 
+    //public void PickUp(GameObject gameObject)
+    //{
+    //    if (PickUpGhost)
+    //    {
+    //        PickUpGhost.Decatched();
+    //    }
+
+    //    PickUpGhost = gameObject.GetComponent<CatchableGhost>();
+    //    animator.Play("catch");
+
+    //    PickUpGhost.Catched();
+    //    inventory.Add(gameObject.name);
+    //}
     public void PickUp(GameObject gameObject)
     {
-        if (PickUpGhost)
+        foreach(GameObject item in catchedGhostes)
         {
-            PickUpGhost.Decatched();
+            if (item.name.Contains(gameObject.name))
+            {
+                if (currentPickup)
+                    currentPickup.SetActive(false);
+
+                gameObject.SetActive(false);
+                item.SetActive(true);
+                currentPickup = item;
+            }
         }
-
-        PickUpGhost = gameObject.GetComponent<CatchableGhost>();
-        animator.Play("catch");
-
-        PickUpGhost.Catched();
-        inventory.Add(gameObject.name);
     }
 }

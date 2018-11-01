@@ -13,29 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sectionDatas:
   - section: {fileID: 11400000, guid: 73824b9b84839ad4ca4dc1896bf03f83, type: 2}
-    Ghost:
-    - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
-      delay: 1
-      percentage: 40
-    Obstacle: []
-    CatchableGhost:
-    - origin: {fileID: 1838988807879564, guid: 76e3de04750859347856aa8890eacf3d, type: 2}
-      delay: 3
-      percentage: 30
-    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
-      delay: 3
-      percentage: 100
-  - section: {fileID: 11400000, guid: 73824b9b84839ad4ca4dc1896bf03f83, type: 2}
-    Ghost:
-    - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
-      delay: 1
-      percentage: 40
-    Obstacle: []
-    CatchableGhost:
-    - origin: {fileID: 1838988807879564, guid: 76e3de04750859347856aa8890eacf3d, type: 2}
-      delay: 3
-      percentage: 30
-    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
-      delay: 3
-      percentage: 40
   isRandomSection: 0

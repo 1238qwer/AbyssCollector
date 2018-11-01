@@ -22,7 +22,6 @@ public class Ghost : MonoBehaviour
             if (!player)
                 return;
 
-            Debug.Log("추격");
             Vector3 dir = player.transform.position - transform.position;
             exerciser.DynamicDirectionChange(dir / 2);
         }    

@@ -89,14 +89,9 @@ public class ObjectPooler : MonoBehaviour{
             }
         }
 
-        try
-        {
-            return pool[0].origin;
-        }
-        catch
-        {
-            return null;
-        }
+        try{return pool[pool.Count - 1].origin;}
+
+        catch{return null;}
     }
 
     public GameObject GetPool(string name)
@@ -105,19 +100,15 @@ public class ObjectPooler : MonoBehaviour{
         {
             if (item.origin.activeSelf == false && item.origin.name.Contains(name))
             {
+                
                 item.origin.SetActive(true);
                 return item.origin;
             }
         }
 
-        try
-        {
-            return pool[0].origin;
-        }
-        catch
-        {
-            return null;
-        }
+        try { return pool[pool.Count - 1].origin; }
+
+        catch { return null; }
     }
 
     public void ReturnPool()
@@ -144,7 +135,7 @@ public class ObjectPooler : MonoBehaviour{
         }
     }
 
-    public void RetureAllPool()
+    public void ReturnAllPool()
     {
         foreach (PoolData item in pool)
         {

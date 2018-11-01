@@ -5,104 +5,99 @@ using System;
 
 public class ObjectGenerater : MonoBehaviour {
 
-    [SerializeField] private GameObject[] generatingPos;
-    [SerializeField] private SectionManager sectionManager;
+    [Serializable]
+    public class GenerateData
+    {
+        public Section.ObjectData data;
+        public float currentTime;
+
+        public GenerateData(Section.ObjectData objectData)
+        {
+            this.data = objectData;
+        }
+    }
+
+    public List<GenerateData> generateDatas = new List<GenerateData>();
+
+    private Vector3 min;
+    private Vector3 max;
 
     float rnd;
-    private float ct;
-    private float ct2;
-    private float ct3;
 
     private ObjectPooler ghostPooler;
     private ObjectPooler catchablePooler;
     private ObjectPooler obstaclePooler;
 
-    public bool isManual;
+    public bool active;
 
-    private List<SectionManager.ObjectData> ghostDatas = new List<SectionManager.ObjectData>();
-    public List<SectionManager.ObjectData> catchableGhostDatas = new List<SectionManager.ObjectData>();
-    private List<SectionManager.ObjectData> obstacleDatas = new List<SectionManager.ObjectData>();
-
-    public void OnSectionChange(SectionManager.SectionData sectionData)
-    {
-        ghostDatas.Clear();
-        catchableGhostDatas.Clear();
-        obstacleDatas.Clear();
-
-        foreach(var item in sectionData.Ghost)
-        {
-            ghostDatas.Add(item);
-            ghostPooler.AutoReturnPool(item.origin, 10,5);
-        }
-        foreach (var item in sectionData.CatchableGhost)
-        {
-            catchableGhostDatas.Add(item);
-            catchablePooler.Pool(item.origin, 10);
-        }
-        foreach (var item in sectionData.Obstacle)
-        {
-            obstacleDatas.Add(item);
-            obstaclePooler.Pool(item.origin, 10);
-        }
-    }
-
-    private void Awake()
+    public void Init(Section.SpawnData spawnData,Vector3 minSpawnPos,Vector3 maxSpawnPos)
     {
         ghostPooler = new ObjectPooler();
         catchablePooler = new ObjectPooler();
         obstaclePooler = new ObjectPooler();
+
+        this.min = minSpawnPos;
+        this.max = maxSpawnPos;
+
+        generateDatas.Clear();
+
+        foreach (var item in spawnData.ghost)
+        {
+            GenerateData tmp = new GenerateData(item);
+            generateDatas.Add(tmp);
+            ghostPooler.Pool(item.origin, 20);
+        }
+        foreach (var item in spawnData.catchable)
+        {
+            GenerateData tmp = new GenerateData(item);
+            generateDatas.Add(tmp);
+            catchablePooler.Pool(item.origin, 10);
+        }
+        foreach (var item in spawnData.obstacle)
+        {
+            GenerateData tmp = new GenerateData(item);
+            generateDatas.Add(tmp);
+            obstaclePooler.Pool(item.origin, 10);
+        }
     }
+
     void Update () {
+        if (active)
+            Spawn();
+    }
 
-        if (isManual)
-            return;
+    public void ActiveHandle(bool active)
+    {
+        this.active = active;
+    }
 
-        ct += Time.deltaTime;
-        foreach(var item in ghostDatas)
+    public void Spawn()
+    {
+        foreach (var item in generateDatas)
         {
-            if (ct >= item.delay)
+            item.currentTime += Time.deltaTime;
+
+            if (item.currentTime >= item.data.delay)
             {
                 rnd = UnityEngine.Random.Range(0, 100);
-                if (rnd <= item.percentage)
+                if (rnd <= item.data.percentage)
                 {
-                    GameObject trap = ghostPooler.GetPool();
-                    trap.transform.position = generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position;
-                    ct = 0;
-
-                    Exerciser trapRig = trap.GetComponent<Exerciser>();
-                    trapRig.DynamicDirectionChange(new Vector3(0, 0, -30));
-                }
-            }
-        }
-
-
-        ct2 += Time.deltaTime;
-        foreach (var item in catchableGhostDatas)
-        {
-            if (ct2 >= item.delay)
-            {
-                rnd = UnityEngine.Random.Range(0, 100);
-                if (rnd <= item.percentage)
-                {
-                    GameObject trap = catchablePooler.GetPool(item.origin.name);
-                    trap.transform.position = generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position;
-                    ct2 = 0;
-                }
-            }
-        }
-
-        ct3 += Time.deltaTime;
-        foreach (var item in obstacleDatas)
-        {
-            if (ct3 >= item.delay)
-            {
-                rnd = UnityEngine.Random.Range(0, 100);
-                if (rnd <= item.percentage)
-                {
-                    GameObject trap =
-                        Instantiate(item.origin, generatingPos[UnityEngine.Random.Range(0, generatingPos.Length)].transform.position, Quaternion.identity);
-                    //trap.transform.rotation = new Quaternion(0, 180, 0, 0);
-                    ct3 = 0;
+                    if (item.data.origin.tag == "Ghost")
+                    {
+                        GameObject trap = ghostPooler.GetPool();
+                        trap.transform.position = new Vector3(UnityEngine.Random.Range(min.x, max.x), 0, max.z);
+                    }
+                    else if (item.data.origin.tag == "Obstacle")
+                    {
+                        GameObject trap = obstaclePooler.GetPool();
+                        trap.transform.position = new Vector3(UnityEngine.Random.Range(min.x, max.x), 0, max.z);
+                    }
+                    else
+                    {
+                        GameObject trap = catchablePooler.GetPool(item.data.origin.name);
+                        trap.transform.position = new Vector3(UnityEngine.Random.Range(min.x, max.x), 0, max.z);
+                    }
+                    item.currentTime = 0;
                 }
             }
         }
