@@ -5251,13 +5251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794863803264a884d81dff88e4e22c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generatingPos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  sectionManager: {fileID: 11400000, guid: 2606706de4240134cbb6851dec04fa25, type: 2}
-  isManual: 0
+  generateDatas: []
+  active: 0
 --- !u!1 &1850099199 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1828661440704768, guid: 7fdbf1bfc890b5344aa820dbbe6c2e49,
