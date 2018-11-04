@@ -7,12 +7,12 @@ public class Ghost : MonoBehaviour
     [HideInInspector] public Animator animator;
     private int chase;
     private GhostPlayer player;
-    private Exerciser exerciser;
+    private LocomotionController exerciser;
 
     void Start () {
         player = GameObject.Find("Player").GetComponent<GhostPlayer>();
         animator = GetComponent<Animator>();
-        exerciser = GetComponent<Exerciser>();
+        exerciser = GetComponent<LocomotionController>();
 
         transform.Rotate(new Vector3(-90, 180, 0));
 

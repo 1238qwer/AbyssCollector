@@ -99,6 +99,7 @@ public class GhostPlayer : MonoBehaviour
                 gameObject.SetActive(false);
                 item.SetActive(true);
                 currentPickup = item;
+                inventory.Add(gameObject.name);
             }
         }
     }

@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   gettingItem:
-  - zombie
-  - police
-  - female
   - Horollo(Clone)
   - Horollo(Clone)
   - Horollo(Clone)

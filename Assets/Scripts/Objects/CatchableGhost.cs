@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Exerciser))]
+[RequireComponent(typeof(LocomotionController))]
 [RequireComponent(typeof(Disappearer))]
 [RequireComponent(typeof(ColliderEventGenerator))]
 [RequireComponent(typeof(NameComparator))]
@@ -12,15 +12,17 @@ public class CatchableGhost : MonoBehaviour
     [HideInInspector] public Animator animator;
 
     private Vector3 direction;
-    private Exerciser exerciser;
+    private LocomotionController locomotionController;
     private Disappearer disappearer;
+    private StateManager stateManager;
     private bool isArcadeGameing;
     private float ct;
 
     void Awake () {
+        stateManager = GetComponentInChildren<StateManager>();
         disappearer = GetComponent<Disappearer>();
         animator = GetComponent<Animator>();
-        exerciser = GetComponent<Exerciser>();
+        locomotionController = GetComponent<LocomotionController>();
 	}
 
     void Start()
@@ -30,6 +32,7 @@ public class CatchableGhost : MonoBehaviour
 
         if (isArcadeGameing)
         {
+            stateManager.State = "Arcade";
             //animator.Play("idle");
             if (transform.position.x >= 0)
             {
@@ -45,11 +48,12 @@ public class CatchableGhost : MonoBehaviour
         }
         else
         {
+            stateManager.State = "Room";
             Disappearer disappearer = GetComponent<Disappearer>();
             transform.Rotate(new Vector3(0, Random.Range(0, 360), 0));
-            exerciser.DynamicDirectionChange(transform.forward);
-            Destroy(disappearer);
-            exerciser.SetSpeed(1f);
+            locomotionController.DynamicDirectionChange(transform.forward);
+            disappearer.Deactivate = true;
+            locomotionController.SetSpeed(1f);
             animator.Play("run");
         }
     }
