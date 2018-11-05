@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 114401679321903070}
   - component: {fileID: 114450168402068706}
   m_Layer: 0
-  m_Name: Horollo(Clone)
+  m_Name: Horollo
   m_TagString: CatchableGhost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

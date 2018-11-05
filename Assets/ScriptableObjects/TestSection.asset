@@ -19,11 +19,11 @@ MonoBehaviour:
     obstacle: []
     catchable:
     - origin: {fileID: 1838988807879564, guid: 76e3de04750859347856aa8890eacf3d, type: 2}
-      delay: 3
-      percentage: 30
+      delay: 6
+      percentage: 15
     - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
-      delay: 3
-      percentage: 30
+      delay: 9
+      percentage: 20
   sectionHead: {fileID: 1995030828420602, guid: af2ace7616d19cc4b876b288d4e22849,
     type: 2}
   sectionBody:
@@ -38,4 +38,4 @@ MonoBehaviour:
   secondSectionDepth: 45
   minSpawnPos: {x: -6, y: 0, z: 50}
   maxSpawnPos: {x: 6, y: 0, z: 50}
-  alreadySpawned: 0
+  alreadySpawned: 1

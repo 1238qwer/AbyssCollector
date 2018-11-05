@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 114801787796879128}
   - component: {fileID: 95412437662913050}
   m_Layer: 0
-  m_Name: Zombie_girl_F(Clone)
+  m_Name: Zombie_girl_F
   m_TagString: CatchableGhost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

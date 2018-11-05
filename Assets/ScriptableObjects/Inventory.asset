@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   gettingItem:
-  - Horollo(Clone)
-  - Horollo(Clone)
-  - Horollo(Clone)
+  - Horollo
+  - Horollo
+  - Horollo
+  - Horollo
+  - Horollo
+  - Horollo
+  - Horollo
+  - Horollo

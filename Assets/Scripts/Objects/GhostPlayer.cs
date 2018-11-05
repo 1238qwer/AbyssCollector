@@ -53,7 +53,7 @@ public class GhostPlayer : MonoBehaviour
 
     public void Die()
     {
-
+        animator.Play("die");
     }
 
     public void HitGhost(GameObject ghost)
