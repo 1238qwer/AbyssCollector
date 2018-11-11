@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da72ba71ca038e442b92b5202b357e17, type: 3}
+  m_Name: GwanghwaMoon
+  m_EditorClassIdentifier: 
+  spawnData:
+    ghost:
+    - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
+      delay: 0.2
+      percentage: 10
+    obstacle: []
+    catchable:
+    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
+      delay: 2
+      percentage: 20
+    - origin: {fileID: 1838988807879564, guid: 76e3de04750859347856aa8890eacf3d, type: 2}
+      delay: 3
+      percentage: 15
+  sectionHead: {fileID: 1864595068306612, guid: 87fb21b01b8ccee479b9e8df9e1958dd,
+    type: 2}
+  sectionBody:
+  - {fileID: 1165923399644170, guid: 62654841ff8418f459b8289f8961c9c9, type: 2}
+  - {fileID: 1273136931625328, guid: a2b4a8b85388a0e4aa8549250ef58823, type: 2}
+  sectionTail: {fileID: 1433750041192134, guid: b5c0ca88e59dc6548b1b12e0a9c3d63f,
+    type: 2}
+  secondSectionDepth: 0
+  minSpawnPos: {x: -6, y: 0, z: 50}
+  maxSpawnPos: {x: 6, y: 0, z: 50}
+  alreadySpawned: 1

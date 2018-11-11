@@ -1,23 +1,14 @@
 fileFormatVersion: 2
-guid: df3a9395c5e41b94394b35147b926c6f
+guid: 1e25f822fc2769048968c91525bf08c6
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Body
-    100002: Gr_Mesh
-    100004: Hair
-    100006: //RootNode
-    400000: Body
-    400002: Gr_Mesh
-    400004: Hair
-    400006: //RootNode
-    2100000: aiStandardSurface1
-    2300000: Body
-    2300002: Hair
-    3300000: Body
-    3300002: Hair
-    4300000: Hair
-    4300002: Body
+    100000: //RootNode
+    400000: //RootNode
+    2100000: Map_Normal
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Bus_02
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: Section Manager
   m_EditorClassIdentifier: 
   sectionDatas:
-  - section: {fileID: 11400000, guid: 73824b9b84839ad4ca4dc1896bf03f83, type: 2}
+  - section: {fileID: 11400000, guid: 98a09bb67d343b04b802cae63c7b12a4, type: 2}
   isRandomSection: 0
