@@ -7,7 +7,7 @@ public class RoomGhostGenerator : MonoBehaviour {
     public Inventory inventory;
     public ObjectGenerater objectGenerater;
 
-    private List<CatchableGhost> spawnGhost = new List<CatchableGhost>();
+    private List<GameObject> spawnGhost = new List<GameObject>();
 
 	// Use this for initialization
 	void Awake () {

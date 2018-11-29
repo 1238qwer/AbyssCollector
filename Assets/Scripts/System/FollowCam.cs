@@ -21,19 +21,19 @@ public class FollowCam : MonoBehaviour {
 
 		if (option == Option.ONLY_X)
         {
-            transform.position = new Vector3(followTo.transform.position.x - 5, transform.position.y, transform.position.z);
+            transform.position = new Vector3(followTo.transform.position.x - 3, transform.position.y, transform.position.z);
         }
         else if (option == Option.ONLY_Y)
         {
-            transform.position = new Vector3(transform.position.z, followTo.transform.position.y - 5, transform.position.z);
+            transform.position = new Vector3(transform.position.z, followTo.transform.position.y - 3, transform.position.z);
         }
         else if (option == Option.ONLY_Z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, followTo.transform.position.z - 5);
+            transform.position = new Vector3(transform.position.x, transform.position.y, followTo.transform.position.z - 3);
         }
         else
         {
-            transform.position = new Vector3(followTo.transform.position.x - 5, followTo.transform.position.x - 5, followTo.transform.position.x - 5);
+            transform.position = new Vector3(followTo.transform.position.x - 3, followTo.transform.position.x - 3, followTo.transform.position.x - 3);
         }
     }
 }

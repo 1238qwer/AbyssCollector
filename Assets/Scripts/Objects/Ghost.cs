@@ -29,6 +29,15 @@ public class Ghost : MonoBehaviour
 
     public void Hit()
     {
+        StartCoroutine(HitCorutine());
+    }
+
+    private IEnumerator HitCorutine()
+    {
         transform.Translate(0, 0.5f, 0);
+
+        yield return new WaitForSeconds(0.1f);
+
+        gameObject.SetActive(false);
     }
 }

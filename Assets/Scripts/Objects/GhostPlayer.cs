@@ -12,7 +12,9 @@ public class GhostPlayer : MonoBehaviour
 
     private StateManager stateManager;
     private Animator animator;
-    private CatchableGhost PickUpGhost;
+    public GameObject PickUpGhost;
+    public bool isCatched;
+    public string ghostString;
     
     void Awake ()
     {
@@ -22,7 +24,7 @@ public class GhostPlayer : MonoBehaviour
         foreach (GameObject item in catchedGhostes)
             item.SetActive(false);
     }
-	
+
     public void ActiveAttack()
     {
         stateManager.State = "attack";
@@ -30,19 +32,6 @@ public class GhostPlayer : MonoBehaviour
     public void DeactiveAttack()
     {
         stateManager.State = "run";
-    }
-
-    public void LateUpdate()
-    {     
-        if (PickUpGhost)
-        {
-            GhostFollow();
-        }
-    }
-
-    private void GhostFollow()
-    {
-        PickUpGhost.transform.localPosition = new Vector3(transform.localPosition.x + 0.35f, transform.localPosition.y - 0.8f, transform.localPosition.z - 0.7f);
     }
 
     public void Attack()
@@ -65,41 +54,47 @@ public class GhostPlayer : MonoBehaviour
         hitGhost.Hit();
     }
 
+    private ObjectGenerater objectGenerater;
+    private ObjectPooler catchablePooler;
+    public CatchableGhost returnGhost;
     public void OnCheckPoint()
     {
-        if (PickUpGhost)
-        {
-            PickUpGhost.OnCheckPoint();
-            PickUpGhost = null;
-        }
+        if (!isCatched && ghostString == string.Empty)
+            return;
+
+        objectGenerater = GameObject.Find("AdvancedGenerator").GetComponent<ObjectGenerater>();
+        catchablePooler = objectGenerater.catchablePooler;
+
+        returnGhost = catchablePooler.GetPool(ghostString).GetComponentInChildren<CatchableGhost>();
+        returnGhost.OnCheckPoint();
+
+        PickUpGhost.SetActive(false);
+        isCatched = false;
+        ghostString = string.Empty;
     }
 
-    //public void PickUp(GameObject gameObject)
-    //{
-    //    if (PickUpGhost)
-    //    {
-    //        PickUpGhost.Decatched();
-    //    }
-
-    //    PickUpGhost = gameObject.GetComponent<CatchableGhost>();
-    //    animator.Play("catch");
-
-    //    PickUpGhost.Catched();
-    //    inventory.Add(gameObject.name);
-    //}
     public void PickUp(GameObject gameObject)
     {
         foreach(GameObject item in catchedGhostes)
         {
-            if (item.name.Contains(gameObject.name))
-            {
-                if (currentPickup)
-                    currentPickup.SetActive(false);
+            Character character = gameObject.GetComponent<Character>();
 
-                gameObject.SetActive(false);
+            if (item.name.Contains(character.id))
+            {
+                if (isCatched)
+                {
+                    return;
+                }
+
+                gameObject.transform.parent.gameObject.SetActive(false);
                 item.SetActive(true);
-                currentPickup = item;
-                inventory.Add(gameObject.name);
+                PickUpGhost = item;
+                ghostString = character.id;
+                isCatched = true;
+                inventory.Add(character.id);
+
+                animator.Play("runtake");
+                animator.SetBool("catched", true);
             }
         }
     }

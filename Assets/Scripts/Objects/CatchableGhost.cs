@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LocomotionController))]
-[RequireComponent(typeof(Disappearer))]
+[RequireComponent(typeof(CatchableLocomotionController))]
+[RequireComponent(typeof(CatchableDisapearer))]
 [RequireComponent(typeof(ColliderEventGenerator))]
-[RequireComponent(typeof(NameComparator))]
-[RequireComponent(typeof(TagComparator))]
-public class CatchableGhost : MonoBehaviour
+
+public class CatchableGhost : Character
 {
     [HideInInspector] public Animator animator;
 
     private Vector3 direction;
-    private LocomotionController locomotionController;
+    private CatchableLocomotionController locomotionController;
     private Disappearer disappearer;
     private StateManager stateManager;
+    private Transform myTransform;
     private bool isArcadeGameing;
     private float ct;
 
     void Awake () {
+        myTransform = transform.parent.transform;
         stateManager = GetComponentInChildren<StateManager>();
         disappearer = GetComponent<Disappearer>();
-        animator = GetComponent<Animator>();
-        locomotionController = GetComponent<LocomotionController>();
+        animator = GetComponentInParent<Animator>();
+        locomotionController = GetComponent<CatchableLocomotionController>();
 	}
 
     void Start()
@@ -58,23 +59,36 @@ public class CatchableGhost : MonoBehaviour
         }
     }
 
-    public void Catched()
-    {
-        transform.Rotate(new Vector3(0, 180, 0));
-        animator.Play("capture");
-        disappearer.Deactivate = true;
-    }
+    //public void Catched()
+    //{
+    //    transform.Rotate(new Vector3(0, 180, 0));
+    //    animator.Play("capture");
+    //    disappearer.Deactivate = true;
+    //}
 
-    public void Decatched()
-    {
-        transform.Rotate(new Vector3(0, 180, 0));
-        animator.Play("idle");
-        disappearer.Deactivate = false;
-    }
+    //public void Decatched()
+    //{
+    //    transform.Rotate(new Vector3(0, 180, 0));
+    //    animator.Play("idle");
+    //    disappearer.Deactivate = false;
+    //}
+
 
     public void OnCheckPoint()
     {
+        myTransform.position = new Vector3(0, 0, 0);
 
+        StartCoroutine(OnCheckPointAction());
     }
 
+    private IEnumerator OnCheckPointAction()
+    {
+        animator.Play("run");
+        myTransform.position += new Vector3(-10,10,30) * Time.deltaTime;
+
+        yield return null;
+
+        StartCoroutine(OnCheckPointAction());
+        
+    }
 }

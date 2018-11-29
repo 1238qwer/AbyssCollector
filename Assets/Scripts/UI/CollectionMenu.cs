@@ -10,7 +10,7 @@ public class CollectionMenu : MonoBehaviour {
 
     [SerializeField] private Inventory inventory;
 
-    public List<CatchableGhost> collections = new List<CatchableGhost>();
+    public List<GameObject> collections = new List<GameObject>();
     public Image image;
 
     public class CollectionData
@@ -43,7 +43,7 @@ public class CollectionMenu : MonoBehaviour {
             currentImage.transform.localScale = new Vector3(1, 1, 1);
 
             CollectionButton currentCollectionButton = currentImage.GetComponent<CollectionButton>();
-            currentCollectionButton.Init(collections[i], "작은 물고기입니다.",inventory);
+            //currentCollectionButton.Init(collections[i], "작은 물고기입니다.",inventory);
 
             Debug.Log(collections[i]);
             Image currentIcon = Instantiate(

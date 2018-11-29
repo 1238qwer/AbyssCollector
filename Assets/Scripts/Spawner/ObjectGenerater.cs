@@ -25,7 +25,7 @@ public class ObjectGenerater : MonoBehaviour {
     float rnd;
 
     private ObjectPooler ghostPooler;
-    private ObjectPooler catchablePooler;
+    public ObjectPooler catchablePooler;
     private ObjectPooler obstaclePooler;
 
     public bool active;
@@ -103,12 +103,19 @@ public class ObjectGenerater : MonoBehaviour {
         }
     }
 
-    public void ManualSpawn(List<CatchableGhost> catchableGhosts)
+    public void ManualSpawn(List<GameObject> catchableGhosts)
     {
         foreach(var item in catchableGhosts)
         {
             GameObject spwned = 
-                Instantiate(item.gameObject, new Vector3(UnityEngine.Random.Range(-1.0f,20.0f),0,UnityEngine.Random.Range(-13.0f,0f)), Quaternion.identity);
+                Instantiate(item, new Vector3(UnityEngine.Random.Range(-1.0f,20.0f),0,UnityEngine.Random.Range(-13.0f,0f)), Quaternion.identity);
         }
+    }
+
+    public void ManualLocationSpawn(Transform location,GameObject gameObject)
+    {
+        GameObject spwned = 
+                Instantiate(gameObject, new Vector3(UnityEngine.Random.Range(-1.0f,20.0f),0,UnityEngine.Random.Range(-13.0f,0f)), Quaternion.identity);
+        
     }
 }

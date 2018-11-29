@@ -96,19 +96,23 @@ public class ObjectPooler : MonoBehaviour{
 
     public GameObject GetPool(string name)
     {
+        if (name == string.Empty)
+            return null;
+
         foreach (PoolData item in pool)
         {
             if (item.origin.activeSelf == false && item.origin.name.Contains(name))
             {
-                
                 item.origin.SetActive(true);
                 return item.origin;
             }
         }
 
-        try { return pool[pool.Count - 1].origin; }
+        //try { return pool[pool.Count - 1].origin; }
 
-        catch { return null; }
+        //catch { return null; }
+
+        return null;
     }
 
     public void ReturnPool()

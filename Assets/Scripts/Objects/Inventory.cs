@@ -28,16 +28,15 @@ public class Inventory : ScriptableObject {
         return null;
     }
 
-    public List<CatchableGhost> GetAll()
+    public List<GameObject> GetAll()
     {
-        List<CatchableGhost> tmp = new List<CatchableGhost>();
+        List<GameObject> tmp = new List<GameObject>();
 
         foreach (string item in gettingItem)
         {
-            CatchableGhost currentItem = Resources.Load<GameObject>("Prefabs/CatchableGhost/" + item).GetComponent<CatchableGhost>();
+            GameObject currentItem = Resources.Load<GameObject>("Prefabs/CatchableGhost/" + item);
 
             tmp.Add(currentItem);
-
         }
 
         return tmp;

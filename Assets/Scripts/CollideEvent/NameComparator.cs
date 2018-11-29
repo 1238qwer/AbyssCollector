@@ -6,6 +6,8 @@ using System;
 
 public class NameComparator : MonoBehaviour
 {
+    public bool getParentName;
+
     [Serializable]
     public class TagData
     {
@@ -21,13 +23,18 @@ public class NameComparator : MonoBehaviour
 
     public void OnEvent(GameObject gameObject)
     {
+        string gameObjectname = gameObject.name;
+
+        if (getParentName)
+            gameObjectname = gameObject.transform.root.name;
+
         foreach (TagData data in nameDatas)
         {
             if (data.isMust)
             {
                 foreach (string name in data.names)
                 {
-                    if (gameObject.name.Contains(name))
+                    if (gameObjectname.Contains(name))
                     {
                         return;
                     }
@@ -40,7 +47,7 @@ public class NameComparator : MonoBehaviour
             foreach (string name in data.names)
             {
 
-                if (gameObject.name.Contains(name))
+                if (gameObjectname.Contains(name))
                 {
                     data.nameEvent.Invoke(gameObject);
                 }

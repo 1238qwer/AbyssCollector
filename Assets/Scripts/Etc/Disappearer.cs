@@ -6,7 +6,7 @@ public class Disappearer : MonoBehaviour {
 
     public bool Deactivate;
     public float lifeTime;
-    private float currentTime;
+    protected float currentTime;
 
 	void Update () {
 

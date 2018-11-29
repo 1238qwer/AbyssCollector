@@ -7,11 +7,13 @@ public class LocomotionController : MonoBehaviour {
     [SerializeField]
     public Vector3 direction;
     public float speed;
-    private bool isStop;
+    protected bool isStop;
 
-	void Update () {
+    void Update () {
         if (!isStop)
+        {          
             transform.position += direction * Time.deltaTime * speed;
+        }
 	}
 
     public void SetSpeed(float speed)
@@ -68,7 +70,7 @@ public class LocomotionController : MonoBehaviour {
         Move();
     }
 
-    public void Turn()
+    public virtual void Turn()
     {
         transform.Rotate(new Vector3(0, Random.Range(90, 180), 0));
         DynamicDirectionChange(transform.forward);
@@ -104,22 +106,22 @@ public class LocomotionController : MonoBehaviour {
     //}
 
     private float followTime;
-    public void Follow(GameObject gameObject)
+    public void Goto(GameObject gameObject)
     {
-        StartCoroutine(FollowObject(gameObject));
+        StartCoroutine(GotoObject(gameObject));
     }
 
-    private IEnumerator FollowObject(GameObject gameObject)
+    private IEnumerator GotoObject(GameObject gameObject)
     {
         Vector3 vec;
         vec = gameObject.transform.position - transform.position;
 
         transform.LookAt(gameObject.transform);
-        DynamicDirectionChange(vec);
+        DynamicDirectionChange(vec.normalized);
 
         yield return null;
 
-        StartCoroutine(FollowObject(gameObject));
+        StartCoroutine(GotoObject(gameObject));
     }
 
     public void FollowTimeSet(float time)

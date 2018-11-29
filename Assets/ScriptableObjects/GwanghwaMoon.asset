@@ -21,17 +21,17 @@ MonoBehaviour:
     - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
       delay: 2
       percentage: 20
-    - origin: {fileID: 1838988807879564, guid: 76e3de04750859347856aa8890eacf3d, type: 2}
+    - origin: {fileID: 1097772555585590, guid: 32fa52aac104ea543ac444a7129c2350, type: 2}
       delay: 3
       percentage: 15
-  sectionHead: {fileID: 1864595068306612, guid: 87fb21b01b8ccee479b9e8df9e1958dd,
+  sectionHead: {fileID: 1861709885380162, guid: 11f63eeb1063e9843a07322dee86686f,
     type: 2}
   sectionBody:
-  - {fileID: 1165923399644170, guid: 62654841ff8418f459b8289f8961c9c9, type: 2}
-  - {fileID: 1273136931625328, guid: a2b4a8b85388a0e4aa8549250ef58823, type: 2}
-  sectionTail: {fileID: 1433750041192134, guid: b5c0ca88e59dc6548b1b12e0a9c3d63f,
+  - {fileID: 1726032028475228, guid: 00333e61433142045983c66a4483fd75, type: 2}
+  - {fileID: 1475514868879002, guid: cd9f7b07ab4f70f41b9d3627821502a3, type: 2}
+  sectionTail: {fileID: 1486297443719562, guid: 628fe79ca9d13b74a969d6427892df01,
     type: 2}
-  secondSectionDepth: 0
+  secondSectionDepth: 40
   minSpawnPos: {x: -6, y: 0, z: 50}
   maxSpawnPos: {x: 6, y: 0, z: 50}
   alreadySpawned: 1
