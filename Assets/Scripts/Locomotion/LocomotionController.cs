@@ -106,23 +106,23 @@ public class LocomotionController : MonoBehaviour {
     //}
 
     private float followTime;
-    public void Goto(GameObject gameObject)
-    {
-        StartCoroutine(GotoObject(gameObject));
-    }
+    //public void Goto(GameObject gameObject)
+    //{
+    //    StartCoroutine(GotoObject(gameObject));
+    //}
 
-    private IEnumerator GotoObject(GameObject gameObject)
-    {
-        Vector3 vec;
-        vec = gameObject.transform.position - transform.position;
+    //private IEnumerator GotoObject(GameObject gameObject)
+    //{
+    //    Vector3 vec;
+    //    vec = gameObject.transform.position - transform.position;
 
-        transform.LookAt(gameObject.transform);
-        DynamicDirectionChange(vec.normalized);
+    //    transform.LookAt(gameObject.transform);
+    //    DynamicDirectionChange(vec.normalized);
 
-        yield return null;
+    //    yield return null;
 
-        StartCoroutine(GotoObject(gameObject));
-    }
+    //    StartCoroutine(GotoObject(gameObject));
+    //}
 
     public void FollowTimeSet(float time)
     {
