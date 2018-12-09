@@ -7,13 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Hololo_UV
-  m_Shader: {fileID: 30, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: LIGHTING_FULL USE_DIST_LIGHT USE_MAIN_TEX
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: LIGHTING_FULL USE_DIST_LIGHT USE_MAIN_TEX _ALPHABLEND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -69,7 +70,7 @@ Material:
     - _ColorBoost: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DstBlend: 0
+    - _DstBlend: 10
     - _FogAnimationFreq: 0.1
     - _FogAnimationHeight: 0.1
     - _FogDensity: 1
@@ -91,7 +92,7 @@ Material:
     - _Magnitude: 1
     - _MainTexPower: 1
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Power: 1
@@ -102,7 +103,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _Specular: 0.01
     - _SpecularHighlights: 1
-    - _SrcBlend: 1
+    - _SrcBlend: 5
     - _TopLight: 1
     - _UVSec: 0
     - _UseDirLight: 0
@@ -110,7 +111,7 @@ Material:
     - _UseFogStaticStart: 0
     - _UseLightMap: 0
     - _WaveLength: 1
-    - _ZWrite: 1
+    - _ZWrite: 0
     - _additiveBlend: 0
     m_Colors:
     - _AmbientColor: {r: 0.5, g: 0.1, b: 0.2, a: 0}

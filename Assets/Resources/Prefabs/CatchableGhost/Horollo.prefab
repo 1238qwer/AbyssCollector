@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4455416856248500}
   - component: {fileID: 137029110200452334}
   - component: {fileID: 95710663164949876}
+  - component: {fileID: 195997995013633882}
   m_Layer: 0
   m_Name: Horollo
   m_TagString: Untagged
@@ -572,7 +573,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95710663164949876
 Animator:
@@ -641,6 +642,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attraction:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &114389398177176996
 MonoBehaviour:
@@ -728,18 +733,7 @@ MonoBehaviour:
     isMust: 1
     tagEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114617073736592340}
-          m_MethodName: Turn
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: TagComparator+TagData+TagEvent, Assembly-CSharp, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
 --- !u!114 &114617073736592340
@@ -920,3 +914,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.11127651, y: 0.05187896, z: -0.00029742718}
     m_Extent: {x: 0.499173, y: 0.4401839, z: 0.5415549}
   m_DirtyAABB: 0
+--- !u!195 &195997995013633882
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1097772555585590}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5412577
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -24,10 +24,17 @@ public class CatchableLocomotionController : LocomotionController
 
     void Update()
     {
-        if (!isStop)
+        if (gameObject.scene.name == "Room")
         {
-            navMeshAgent.SetDestination(direction * Time.deltaTime * speed);
-            //parents.transform.position += direction * Time.deltaTime * speed;
+            if (!isStop)
+            {
+                navMeshAgent.SetDestination(direction * Time.deltaTime * speed);
+                //parents.transform.position += direction * Time.deltaTime * speed;
+            }
+        }
+        else
+        {
+            parents.transform.position += direction * Time.deltaTime * speed;
         }
     }
 
@@ -42,13 +49,19 @@ public class CatchableLocomotionController : LocomotionController
         StartCoroutine(GotoObject(gameObject));
     }
 
+    float distance;
     private IEnumerator GotoObject(GameObject gameObject)
     {
-        Debug.Log(parents.name + "카페가는중");
+        Debug.Log(gameObject + "로 가는중");
         navMeshAgent.SetDestination(gameObject.transform.position);
 
         yield return null;
 
-        StartCoroutine(GotoObject(gameObject));
+        distance = Vector3.Distance(parents.transform.position, gameObject.transform.position);
+
+        if (distance <= 0.5f)
+            yield break;
+
+        StartCoroutine(GotoObject(gameObject));       
     }
 }

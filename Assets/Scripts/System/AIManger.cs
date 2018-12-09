@@ -25,13 +25,9 @@ public class AIManger : MonoBehaviour {
 
             if (ct >= 5.0f)
             {
-                rnd = Random.Range(0, 5);
+                rnd = Random.Range(0, attraction.Length-1);
 
-                if (rnd == 3)
-                {
-                    Debug.Log("카페가야징");
-                    catchableLocomotionController.Goto(attraction[0]);
-                }
+                catchableLocomotionController.Goto(attraction[rnd]);
 
                 ct = 0;
             }

@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23686770002715366}
   - component: {fileID: 65795790166305346}
   - component: {fileID: 54551806342855244}
+  - component: {fileID: 208612958394624882}
   m_Layer: 0
   m_Name: Statue_01
   m_TagString: Obstacle
@@ -200,3 +201,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: -15}
   speed: 1
+--- !u!208 &208612958394624882
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1300482232811634}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.9480001, y: 3.2870002, z: 0.9990001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.09900001, y: 3.2870002, z: -0.041}
+  m_TimeToStationary: 0.5
