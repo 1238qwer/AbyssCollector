@@ -16,9 +16,13 @@ public class CatchableGhost : Character
     private StateManager stateManager;
     private Transform myTransform;
     private bool isArcadeGameing;
+
+    private ArcadeManager arcadeManager;
+
     private float ct;
 
     void Awake () {
+        arcadeManager = GameObject.FindObjectOfType<ArcadeManager>();
         myTransform = transform.parent.transform;
         stateManager = GetComponentInChildren<StateManager>();
         disappearer = GetComponent<Disappearer>();
@@ -77,16 +81,27 @@ public class CatchableGhost : Character
     public void OnCheckPoint()
     {
         myTransform.position = new Vector3(0, 0, 0);
-
+        myTransform.Rotate(0, 180, 0);
         StartCoroutine(OnCheckPointAction());
     }
 
+    float checkpointTime;
     private IEnumerator OnCheckPointAction()
     {
-        animator.Play("run");
-        myTransform.position += new Vector3(-10,10,30) * Time.deltaTime;
+        checkpointTime += Time.deltaTime;
 
+        animator.Play("run");
+        myTransform.position += new Vector3(2,0,1) * Time.deltaTime;
+       
         yield return null;
+
+        Debug.Log("음?");
+        if (checkpointTime >= 5.0f)
+        {
+            arcadeManager.LocomotionAllResume();
+            Debug.Log("풀림");
+            yield break;
+        }
 
         StartCoroutine(OnCheckPointAction());
         

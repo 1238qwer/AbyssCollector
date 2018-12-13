@@ -14,11 +14,11 @@ MonoBehaviour:
   spawnData:
     ghost:
     - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
-      delay: 0.2
+      delay: 0.4
       percentage: 10
     obstacle: []
     catchable:
-    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
+    - origin: {fileID: 1793940478388158, guid: 818749f956dfeaa4492ed8fccab91c98, type: 2}
       delay: 2
       percentage: 20
     - origin: {fileID: 1097772555585590, guid: 32fa52aac104ea543ac444a7129c2350, type: 2}
@@ -29,9 +29,10 @@ MonoBehaviour:
   sectionBody:
   - {fileID: 1726032028475228, guid: 00333e61433142045983c66a4483fd75, type: 2}
   - {fileID: 1475514868879002, guid: cd9f7b07ab4f70f41b9d3627821502a3, type: 2}
+  - {fileID: 1726032028475228, guid: 00333e61433142045983c66a4483fd75, type: 2}
   sectionTail: {fileID: 1486297443719562, guid: 628fe79ca9d13b74a969d6427892df01,
     type: 2}
   secondSectionDepth: 40
   minSpawnPos: {x: -6, y: 0, z: 50}
   maxSpawnPos: {x: 6, y: 0, z: 50}
-  alreadySpawned: 1
+  alreadySpawned: 0

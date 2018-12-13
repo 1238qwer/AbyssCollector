@@ -7,6 +7,7 @@ public class CatchableLocomotionController : LocomotionController
 {
     private Transform parents;
     private NavMeshAgent navMeshAgent;
+    private Vector3 desination;
 
     public Transform Paraents
     {
@@ -28,7 +29,7 @@ public class CatchableLocomotionController : LocomotionController
         {
             if (!isStop)
             {
-                navMeshAgent.SetDestination(direction * Time.deltaTime * speed);
+                navMeshAgent.SetDestination(desination);
                 //parents.transform.position += direction * Time.deltaTime * speed;
             }
         }
@@ -44,15 +45,32 @@ public class CatchableLocomotionController : LocomotionController
         DynamicDirectionChange(parents.forward);
     }
 
+    public void TurnTo(GameObject gameObject)
+    {
+        navMeshAgent.SetDestination(gameObject.transform.position);
+    }
+
     public void Goto(GameObject gameObject)
     {
-        StartCoroutine(GotoObject(gameObject));
+        //StartCoroutine(GotoObject(gameObject));
+
+        //Debug.Log(gameObject + "로 가는중");
+        desination = gameObject.transform.position;
+        navMeshAgent.isStopped = false;
+    }
+
+    public void Stop()
+    {
+        //StartCoroutine(GotoObject(gameObject));
+
+        //Debug.Log(gameObject + "로 가는중");
+        navMeshAgent.isStopped = true;
     }
 
     float distance;
     private IEnumerator GotoObject(GameObject gameObject)
     {
-        Debug.Log(gameObject + "로 가는중");
+        //Debug.Log(gameObject + "로 가는중");
         navMeshAgent.SetDestination(gameObject.transform.position);
 
         yield return null;
@@ -62,6 +80,6 @@ public class CatchableLocomotionController : LocomotionController
         if (distance <= 0.5f)
             yield break;
 
-        StartCoroutine(GotoObject(gameObject));       
+        StartCoroutine(GotoObject(gameObject));
     }
 }

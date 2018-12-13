@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da72ba71ca038e442b92b5202b357e17, type: 3}
+  m_Name: NavTest
+  m_EditorClassIdentifier: 
+  spawnData:
+    ghost:
+    - origin: {fileID: 1732681233490720, guid: bad0cafaa8abbe34b8bad3235598fb25, type: 2}
+      delay: 0.2
+      percentage: 10
+    obstacle: []
+    catchable:
+    - origin: {fileID: 1851294358832298, guid: 96c547d7f5e80104e80a3ebc069a6df8, type: 2}
+      delay: 2
+      percentage: 20
+    - origin: {fileID: 1097772555585590, guid: 32fa52aac104ea543ac444a7129c2350, type: 2}
+      delay: 3
+      percentage: 15
+  sectionHead: {fileID: 1762735887881696, guid: b0fca9182454cac49a00e0eced5fe1b8,
+    type: 2}
+  sectionBody:
+  - {fileID: 1011018993033044, guid: be49054dbb35081409a63ca7aac2e5e4, type: 2}
+  - {fileID: 1661345757756744, guid: 87483048c535f7149a3696cf43a44442, type: 2}
+  - {fileID: 1011018993033044, guid: be49054dbb35081409a63ca7aac2e5e4, type: 2}
+  sectionTail: {fileID: 1098375760209554, guid: efe672232af949a4abc7f02758f1347a,
+    type: 2}
+  secondSectionDepth: 40
+  minSpawnPos: {x: -6, y: 0, z: 50}
+  maxSpawnPos: {x: 6, y: 0, z: 50}
+  alreadySpawned: 0

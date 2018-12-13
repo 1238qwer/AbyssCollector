@@ -68,6 +68,8 @@ public class GhostPlayer : MonoBehaviour
         returnGhost = catchablePooler.GetPool(ghostString).GetComponentInChildren<CatchableGhost>();
         returnGhost.OnCheckPoint();
 
+        animator.SetBool("catched", false);
+
         PickUpGhost.SetActive(false);
         isCatched = false;
         ghostString = string.Empty;

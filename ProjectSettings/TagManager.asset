@@ -8,6 +8,7 @@ TagManager:
   - Ghost
   - Obstacle
   - CheckPoint
+  - EventObj
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - EventObject
+  - Ghost
   - 
   - 
   - 

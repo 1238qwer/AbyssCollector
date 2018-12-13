@@ -76,10 +76,7 @@ public class LocomotionController : MonoBehaviour {
         DynamicDirectionChange(transform.forward);
     }
 
-    public void TurnTo(GameObject gameObject)
-    {
-        transform.LookAt(gameObject.transform);
-    }
+
 
     //private bool turn;
     //public void Turn(float time)
