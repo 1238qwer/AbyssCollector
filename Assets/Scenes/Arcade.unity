@@ -648,17 +648,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1248682115}
-          m_MethodName: LocomotionAllStop
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1232478235}
           m_MethodName: Play
           m_Mode: 5
@@ -3038,6 +3027,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1781930563638536, guid: daa6cceb1b087d74aad6916dac2805ea, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa6cceb1b087d74aad6916dac2805ea, type: 2}
   m_IsPrefabAsset: 0
@@ -3452,6 +3445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
   speed: 1
+  testNavSystem: 0
 --- !u!114 &1232478237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3627,6 +3621,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4005808538926482, guid: daa6cceb1b087d74aad6916dac2805ea, type: 2}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1781930563638536, guid: daa6cceb1b087d74aad6916dac2805ea, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4745,7 +4743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1601735886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4895,8 +4893,8 @@ Camera:
   m_GameObject: {fileID: 1601735885}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.25760666, g: 0.19174972, b: 0.2924528, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -4907,11 +4905,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 9.5
+  near clip plane: 0
   far clip plane: 3000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4933,14 +4931,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1601735885}
-  m_LocalRotation: {x: 0.3282379, y: 0.15756346, z: -0.049946215, w: 0.930021}
-  m_LocalPosition: {x: -3.8, y: 9.7, z: -6.6}
+  m_LocalRotation: {x: 0.20346268, y: 0.09979433, z: -0.016954038, w: 0.97383606}
+  m_LocalPosition: {x: -4.17, y: 10.19, z: -8.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1165813850}
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 38.776, y: 19.504002, z: 0.77400005}
+  m_LocalEulerAnglesHint: {x: 23.557001, y: 11.801001, z: 0.47400004}
 --- !u!1 &1624937966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,8 +4981,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0.90673435, b: 0.2783019, a: 1}
-  m_Intensity: 10
-  m_Range: 30
+  m_Intensity: 5
+  m_Range: 15
   m_SpotAngle: 55
   m_CookieSize: 10
   m_Shadows:

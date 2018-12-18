@@ -9,9 +9,16 @@ public class LocomotionController : MonoBehaviour {
     public float speed;
     protected bool isStop;
 
+    public bool testNavSystem;
+
     void Update () {
         if (!isStop)
-        {          
+        {    
+            if (testNavSystem)
+            {
+                transform.Translate(-Vector3.up * 25 * Time.deltaTime);
+            }
+            else
             transform.position += direction * Time.deltaTime * speed;
         }
 	}

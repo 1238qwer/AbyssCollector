@@ -1095,8 +1095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 136b3a4f450759549b5a73c47fa3c023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0, z: -15}
+  direction: {x: 0, y: 0, z: -12}
   speed: 1
+  testNavSystem: 0
 --- !u!114 &114560227557400636
 MonoBehaviour:
   m_ObjectHideFlags: 1
