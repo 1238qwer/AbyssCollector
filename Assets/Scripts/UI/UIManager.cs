@@ -9,6 +9,7 @@ public class UIManager : ScriptableObject {
 
     [SerializeField] private Text scoreText;//ui매니저로
     [SerializeField] private GameObject gameOverUI;//ui매니저로
+    [SerializeField] private GameObject defaultUI;
 
     private float score;
 
@@ -16,6 +17,7 @@ public class UIManager : ScriptableObject {
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         gameOverUI = GameObject.Find("GameOverUI");
+        defaultUI = GameObject.Find("defaultUI");
     }
 
     public void ScroeUp()
@@ -38,5 +40,10 @@ public class UIManager : ScriptableObject {
     public void GotoCollectScene()
     {
         SceneManager.LoadScene("Arcade");
+    }
+
+    public void defaultUISwitch(bool isOn)
+    {
+        defaultUI.SetActive(isOn);
     }
 }

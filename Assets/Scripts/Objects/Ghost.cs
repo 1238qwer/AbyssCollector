@@ -36,6 +36,8 @@ public class Ghost : MonoBehaviour
     public bool timeCheck;
     public float remainTime;
 
+    public float speed;
+
     int rnd;
 
     void Update()
@@ -43,12 +45,12 @@ public class Ghost : MonoBehaviour
         fwd = transform.TransformDirection(-Vector3.forward);
         ray = new Ray(transform.position, fwd);
 
-        if (Physics.Raycast(ray, out hit, 4))
+        if (Physics.Raycast(ray, out hit, 5))
         {
             if (hit.transform.CompareTag("Obstacle") || hit.transform.CompareTag("CatchableGhost"))
             {
                 
-                time = 0.07f;
+                time = 0.03f;
                 timeCheck = true;
             }
         }
@@ -62,7 +64,7 @@ public class Ghost : MonoBehaviour
             else
                 transform.Rotate(0, -1, 0);
 
-            transform.Translate(-Vector3.forward * Time.deltaTime * 17);
+            transform.Translate(-Vector3.forward * Time.deltaTime * speed);
 
             if (time <= 0)
             {
@@ -86,7 +88,7 @@ public class Ghost : MonoBehaviour
                 }
             }
 
-            transform.Translate(-Vector3.forward * Time.deltaTime * 17);
+            transform.Translate(-Vector3.forward * Time.deltaTime * speed);
         }
     }
 

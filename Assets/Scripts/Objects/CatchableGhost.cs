@@ -95,11 +95,9 @@ public class CatchableGhost : Character
        
         yield return null;
 
-        Debug.Log("음?");
         if (checkpointTime >= 5.0f)
         {
             arcadeManager.LocomotionAllResume();
-            Debug.Log("풀림");
             yield break;
         }
 
